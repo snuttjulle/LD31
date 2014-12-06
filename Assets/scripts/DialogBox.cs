@@ -2,6 +2,8 @@
 using System.Collections;
 using System;
 
+public enum TransitionState { None, In, Out };
+
 public class DialogBox : MonoBehaviour
 {
 	public GameObject[] TopRow;
@@ -14,8 +16,6 @@ public class DialogBox : MonoBehaviour
 
 	const int default_size = 10;
 	const float transition_time = 2.0f;
-
-	private enum TransitionState { None, In, Out };
 
 	TransitionState _currentState;
 	float _time = 0.0f;

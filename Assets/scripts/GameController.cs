@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	public Burner Burner;
 	public Fumes Fumes;
 	public DialogBox DialogBox;
+	public OverlayHandler OverlayHandler;
 
 	AnimationStateMachine _animationStateMachine;
 
@@ -26,5 +27,9 @@ public class GameController : MonoBehaviour
 			DialogBox.TransitionIn();
 		else if (Input.GetKeyUp(KeyCode.S))
 			DialogBox.TransitionOut();
+		else if (Input.GetKeyUp(KeyCode.D))
+			OverlayHandler.Show();
+		else if (Input.GetKeyUp(KeyCode.F))
+			OverlayHandler.Hide();
 	}
 }
