@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Button : MonoBehaviour
 {
 	Action<object> OnTriggerCallback;
@@ -41,10 +42,11 @@ public class Button : MonoBehaviour
 	{
 		if (_collider.bounds.Contains(new Vector3(hitInfo.point.x, hitInfo.point.y, _collider.transform.position.z)))
 		{
-			//Debug.Log(hitInfo.transform.gameObject.name);
-
 			if (OnTriggerCallback != null)
+			{
 				OnTriggerCallback(this);
+				OnTriggerCallback = null;
+			}
 		}
 	}
 
