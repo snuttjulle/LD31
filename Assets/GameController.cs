@@ -22,5 +22,9 @@ public class GameController : MonoBehaviour
 			_animationStateMachine.SetAnimationState(AnimationStates.Cooking);
 		else if (Input.GetKeyUp(KeyCode.Q))
 			_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
+		else if (Input.GetKeyUp(KeyCode.A))
+			DialogBox.TransitionIn();
+		else if (Input.GetKeyUp(KeyCode.S))
+			DialogBox.TransitionOut();
 	}
 }

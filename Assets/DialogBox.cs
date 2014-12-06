@@ -9,12 +9,37 @@ public class DialogBox : MonoBehaviour
 	public GameObject[] BottomRow;
 	public GameObject Arrow;
 
-	private Vector3[,] _defaultSizes;
+	private Vector3[,] _defaultSizes = null;
 	private Vector3 _defaultArrowSize;
 
 	const int default_size = 10;
+	const float transition_time = 2.0f;
+
+	private enum TransitionState { None, In, Out };
+
+	TransitionState _currentState;
+	float _time = 0.0f;
 
 	void Awake()
+	{
+		Hide();
+		Init();
+
+		SetWidth(50);
+		SetHeight(30);
+	}
+
+	private void Hide()
+	{
+		this.transform.position = new Vector3(transform.position.x, transform.position.y, 100); //the uglies of fixes, getting desperate here
+	}
+
+	private void Show()
+	{
+		this.transform.position = new Vector3(transform.position.x, transform.position.y, -10); //the uglies of fixes, getting desperate here
+	}
+
+	private void Init()
 	{
 		int rows = 3; int columns = 3;
 		_defaultSizes = new Vector3[rows, columns];
@@ -29,9 +54,44 @@ public class DialogBox : MonoBehaviour
 			_defaultSizes[2, i] = BottomRow[i].transform.position;
 
 		_defaultArrowSize = Arrow.transform.position;
+	}
 
-		SetWidth(50);
-		SetHeight(30);
+	public void TransitionIn()
+	{
+		transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
+		_time = 0.0f;
+		_currentState = TransitionState.In;
+		Show();
+	}
+
+	public void TransitionOut()
+	{
+		transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
+		_time = 0.0f;
+		_currentState = TransitionState.Out;
+	}
+
+	void Update()
+	{
+		if (_currentState == TransitionState.None)
+			return;
+
+		float from = 1.0f; float to = 1.0f;
+		_time += Time.deltaTime * transition_time;
+
+		if (_currentState == TransitionState.In)
+			from = 0.0f;
+		else if (_currentState == TransitionState.Out)
+			to = 0.0f;
+
+		float value = MathUtils.Berp(from, to, _time);
+		transform.localScale = new Vector3(transform.localScale.x, value, transform.localScale.z);
+
+		if (_time > 1.0f && _currentState == TransitionState.Out)
+			Hide();
+
+		if (_time > 1.0f)
+			_currentState = TransitionState.None;
 	}
 
 	public void SetWidth(float width)
@@ -65,6 +125,7 @@ public class DialogBox : MonoBehaviour
 
 		float factor = height / (float)default_size;
 		float scaleFactor = (height / (default_size / 2)) - 1;
+		scaleFactor += 0.2f; //stupid fix to avoid seeing through the box in transitions
 
 		for (int i = 0; i < TopRow.Length; i++)
 			TopRow[i].transform.position = new Vector3(TopRow[i].transform.position.x, _defaultSizes[0, i].y * factor, TopRow[i].transform.position.z);
