@@ -332,5 +332,105 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
+    - name: KitchenAtlas_29
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 120
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_tl
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 105
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_tm
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 105
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_tr
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 105
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_ml
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 96
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_bl
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 79
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_bm
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 79
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_br
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 79
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_mr
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 96
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: box_mm
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 96
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
