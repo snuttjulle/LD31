@@ -115,19 +115,19 @@ TextureImporter:
     - name: KitchenAtlas_7
       rect:
         serializedVersion: 2
-        x: 129
+        x: 125
         y: 199
-        width: 15
+        width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_8
       rect:
         serializedVersion: 2
-        x: 150
+        x: 146
         y: 199
-        width: 15
+        width: 19
         height: 26
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -135,22 +135,22 @@ TextureImporter:
     - name: KitchenAtlas_9
       rect:
         serializedVersion: 2
-        x: 172
+        x: 168
         y: 199
-        width: 15
+        width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_10
       rect:
         serializedVersion: 2
-        x: 191
+        x: 189
         y: 199
-        width: 17
+        width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_11
       rect:
@@ -160,7 +160,7 @@ TextureImporter:
         width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_12
       rect:
@@ -170,7 +170,7 @@ TextureImporter:
         width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_13
       rect:
@@ -190,7 +190,7 @@ TextureImporter:
         width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_15
       rect:
@@ -220,7 +220,7 @@ TextureImporter:
         width: 17
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_19
       rect:
@@ -230,7 +230,7 @@ TextureImporter:
         width: 17
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_20
       rect:
@@ -290,7 +290,7 @@ TextureImporter:
         width: 19
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_29
       rect:
@@ -300,7 +300,7 @@ TextureImporter:
         width: 19
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_30
       rect:
@@ -310,7 +310,7 @@ TextureImporter:
         width: 19
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: KitchenAtlas_30
       rect:
