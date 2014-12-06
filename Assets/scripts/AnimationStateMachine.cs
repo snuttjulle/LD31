@@ -19,13 +19,13 @@ public class AnimationStateMachine
 
 	public void SetAnimationState(AnimationStates state)
 	{
-		if (_currentState == AnimationStates.NotCooking && state == AnimationStates.Cooking)
+		if (state == AnimationStates.Cooking)
 		{
 			_controller.Burner.TurnOn();
 			_controller.CookingDevices[0].gameObject.SetActive(true);
 			_controller.Fumes.gameObject.SetActive(true);
 		}
-		else if (_currentState == AnimationStates.Cooking && state == AnimationStates.NotCooking)
+		else if (state == AnimationStates.NotCooking)
 		{
 			_controller.Burner.TurnOff();
 

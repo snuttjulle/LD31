@@ -36,7 +36,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 1
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -345,90 +345,90 @@ TextureImporter:
     - name: box_tl
       rect:
         serializedVersion: 2
-        x: 109
-        y: 105
-        width: 9
-        height: 9
+        x: 104
+        y: 107
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_tm
       rect:
         serializedVersion: 2
-        x: 118
-        y: 105
-        width: 9
-        height: 9
+        x: 116
+        y: 107
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_tr
       rect:
         serializedVersion: 2
-        x: 127
-        y: 105
-        width: 9
-        height: 9
+        x: 128
+        y: 107
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_ml
       rect:
         serializedVersion: 2
-        x: 109
+        x: 104
         y: 96
-        width: 9
-        height: 9
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_bl
       rect:
         serializedVersion: 2
-        x: 109
-        y: 79
-        width: 9
-        height: 9
+        x: 104
+        y: 85
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_bm
       rect:
         serializedVersion: 2
-        x: 118
-        y: 79
-        width: 9
-        height: 9
+        x: 116
+        y: 85
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_br
       rect:
         serializedVersion: 2
-        x: 127
-        y: 79
-        width: 9
-        height: 9
+        x: 128
+        y: 85
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_mr
       rect:
         serializedVersion: 2
-        x: 127
+        x: 128
         y: 96
-        width: 9
-        height: 9
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: box_mm
       rect:
         serializedVersion: 2
-        x: 118
+        x: 116
         y: 96
-        width: 9
-        height: 9
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
