@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 	public CookingDevice[] CookingDevices;
 	public Burner Burner;
 	public Fumes Fumes;
+	public DialogBox DialogBox;
 
 	AnimationStateMachine _animationStateMachine;
 
