@@ -24,8 +24,9 @@ public class NoticeHandler : MonoBehaviour
 
 		GameObject spawn = (GameObject)Instantiate(DialogBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
 		DialogBox box = spawn.GetComponent<DialogBox>();
-		box.SetWidth(50);
-		box.SetHeight(20);
+		box.SetWidth(70);
+		box.SetHeight(10);
+		box.CloseOnFocusTap = true;
 		box.TransitionIn();
 	}
 }

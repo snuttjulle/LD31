@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoticeGraphics: {fileID: 9500000}
+  DialogBoxPrefab: {fileID: 100018, guid: 41c737e4c9f09244a90001cc0833d204, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
