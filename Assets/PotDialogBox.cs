@@ -5,6 +5,7 @@ public class PotDialogBox : MonoBehaviour
 {
 	public Button CookButton;
 	public Button CancelButton;
+	public Button ResetButton;
 	public Kitchen Kitchen;
 	public DialogBox CookDialogBox;
 	public DialogBox IngredientsDialogBox;
@@ -20,15 +21,14 @@ public class PotDialogBox : MonoBehaviour
 		_inventory = Kitchen.GetInventory();
 		_inventory.SetDialogContentHandler(CookingContentHandler, PotTextPrefab);
 
+		ResetButton.MultiPress = true;
+
 		CookDialogBox.SetHeight(70);
 		CookDialogBox.SetWidth(50);
 
 		IngredientsDialogBox.SetHeight(50);
 		IngredientsDialogBox.SetWidth(70);
-	}
 
-	public void Show()
-	{
 		float listPosY = 33;
 		float listPosX = -53;
 		foreach (Ingredient ing in _inventory.Collection.IngredientCollection)
@@ -57,11 +57,37 @@ public class PotDialogBox : MonoBehaviour
 			button.MultiPress = true;
 			button.SetTriggerCallback(OnIngredientAdd);
 		}
+	}
 
+	public void Show()
+	{
 		CookDialogBox.TransitionIn();
 		CancelButton.SetTriggerCallback(CloseDialog);
+		ResetButton.SetTriggerCallback(OnPotReset);
+		CookButton.SetTriggerCallback(OnCook);
 
 		IngredientsDialogBox.TransitionIn();
+	}
+
+	private void OnCook(object sender)
+	{
+		if (_inventory.NumIngredientsInPot > 0)
+		{
+			Debug.Log("Let's cook!");
+			Hide();
+			Kitchen.Cook(_inventory.IngredientsInPot);
+			_inventory.NewPot();
+		}
+		else
+		{
+			Debug.Log("No ingredients to cook with");
+			((Button)sender).DontSwallowCallback();
+		}
+	}
+
+	private void OnPotReset(object sender)
+	{
+		_inventory.NewPot();
 	}
 
 	private void OnIngredientAdd(object sender)
@@ -72,16 +98,25 @@ public class PotDialogBox : MonoBehaviour
 
 	public void Hide()
 	{
+		//ResetButton.RemoveTriggerCallback();
+		//CookDialogBox.TransitionOut();
+		//Kitchen.ActivateButton();
+
 		CookDialogBox.TransitionOut();
-		Kitchen.ActivateButton();
+		IngredientsDialogBox.TransitionOut();
+		CookDialogBox.SetOnTransitionComplete((x) =>
+		{
+			Kitchen.ActivateButton();
+		});
 	}
 
 	void CloseDialog(object sender)
 	{
-		CookDialogBox.TransitionOut();
-		IngredientsDialogBox.TransitionOut();
-		CookDialogBox.SetOnTransitionComplete((x) => {
-			Kitchen.ActivateButton();
-		});
+		Hide();
+		//CookDialogBox.TransitionOut();
+		//IngredientsDialogBox.TransitionOut();
+		//CookDialogBox.SetOnTransitionComplete((x) => {
+		//	Kitchen.ActivateButton();
+		//});
 	}
 }

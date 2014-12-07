@@ -9,6 +9,11 @@ public class KitchenDatabase : ScriptableObject
 	public List<IngredientCollections> IngredientCollection;
 	//public List<Ingredient> Ingredients;
 
+	public Food GetDish(IngredientCollections ingredients)
+	{
+		return null;
+	}
+
 	[MenuItem("Assets/Create/KitchenDatabase")]
 	public static void CreateAsset()
 	{

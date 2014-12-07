@@ -9,7 +9,7 @@ public class ContentHandler : MonoBehaviour
 	{
 		foreach (Transform child in transform)
 		{
-			Object.Destroy(child);
+			Object.Destroy(child.gameObject);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameController : MonoBehaviour
 	public Burner Burner;
 	public Fumes Fumes;
 	public OverlayHandler OverlayHandler;
+	public ProgressBar ProgressBarPrefab;
 
 	AnimationStateMachine _animationStateMachine;
 
@@ -28,5 +30,22 @@ public class GameController : MonoBehaviour
 			OverlayHandler.Hide();
 		else if (Input.GetKeyUp(KeyCode.T))
 			Chef.GiveThumbsUp();
+	}
+
+	public void StartProgressBar(float time, Vector3 position, Action<object> callback)
+	{
+		var progressBar = (ProgressBar)UnityEngine.Object.Instantiate(ProgressBarPrefab, position, new Quaternion());
+		Vector3 pos = progressBar.transform.position;
+		pos.z = -15;
+		progressBar.transform.position = pos;
+		
+		progressBar.ProgressTime = time;
+		progressBar.SetCallback(callback);
+		progressBar.Start();
+	}
+
+	public void Cook()
+	{
+		_animationStateMachine.SetAnimationState(AnimationStates.Cooking);
 	}
 }

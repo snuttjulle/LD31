@@ -7,6 +7,9 @@ public class IngredientsInventory
 	public IngredientCollections Collection { get { return _collection; } }
 
 	private IngredientCollections _ingredientsInPot;
+	public IngredientCollections IngredientsInPot { get { return _ingredientsInPot; } }
+
+	public int NumIngredientsInPot { get { return _ingredientsInPot.IngredientCollection.Count; } }
 
 	private ContentHandler _cookDialogContentHandler;
 	private GameObject _labelPrefab;
@@ -29,7 +32,7 @@ public class IngredientsInventory
 	public void NewPot()
 	{
 		_cookDialogContentHandler.CleanContent();
-		_ingredientsInPot = new IngredientCollections();
+		_ingredientsInPot.IngredientCollection.Clear();
 		_listPosY = default_pos_y;
 	}
 

@@ -450,6 +450,7 @@ MonoBehaviour:
   Burner: {fileID: 1259932777}
   Fumes: {fileID: 529949696}
   OverlayHandler: {fileID: 1019244894}
+  ProgressBarPrefab: {fileID: 11400000, guid: 5c4d75cd845d71a47b8d8a54d62f8cd9, type: 2}
 --- !u!4 &86113900
 Transform:
   m_ObjectHideFlags: 0
@@ -558,6 +559,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &96781849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1810,6 +1812,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &529949694
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2124,6 +2127,7 @@ Transform:
   - {fileID: 1763464683}
   - {fileID: 1629514684}
   - {fileID: 1659927930}
+  - {fileID: 1021890889}
   m_Father: {fileID: 1952517034}
   m_RootOrder: 10
 --- !u!114 &642262103
@@ -2740,11 +2744,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CookButton: {fileID: 161334212}
   CancelButton: {fileID: 1148289100}
+  ResetButton: {fileID: 691267481}
   Kitchen: {fileID: 1146576847}
   CookDialogBox: {fileID: 931793928}
   IngredientsDialogBox: {fileID: 1952517038}
   CookingContentHandler: {fileID: 618696791}
-  IngredientsContentHandler: {fileID: 642262103}
+  IngredientsContentHandler: {fileID: 1021890890}
   TextPrefab: {fileID: 100002, guid: dd33237f6334e224d95af7ac137fdee1, type: 2}
   PotTextPrefab: {fileID: 100000, guid: 6b76684b750eb4543974733546f91b9d, type: 2}
 --- !u!1 &894746972
@@ -2979,6 +2984,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &933701103
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,6 +3572,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverlayText: {fileID: 1401260284}
   BlackScreen: {fileID: 1836829873}
+--- !u!1 &1021890888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1021890889}
+  - 114: {fileID: 1021890890}
+  m_Layer: 0
+  m_Name: labelContentHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1021890889
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021890888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 642262102}
+  m_RootOrder: 4
+--- !u!114 &1021890890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021890888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa301ba4e10afc4e84e5a920b22fb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069990891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,6 +3844,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &1135978170
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3899,6 +3945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489e3b16ffc85f149b5fcecd9acb802b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Controller: {fileID: 86113899}
   PotDialogBox: {fileID: 806852439}
   Database: {fileID: 11400000, guid: 8e5cabffcad24e54786eb867b059b182, type: 2}
 --- !u!1 &1148289097
@@ -4196,6 +4243,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1259932777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4405,6 +4453,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &1332505396
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4583,7 +4632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 50fc61d8e51aa0e40a73386d4cd6b0bd, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 50fc61d8e51aa0e40a73386d4cd6b0bd, type: 2}
       propertyPath: m_IsActive
@@ -5050,6 +5099,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &1500379442
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6930,6 +6980,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1952517036
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class Button : MonoBehaviour
 	Action<object> OnTriggerCallback;
 	BoxCollider2D _collider;
 
+	private bool _swallow = true;
+
 	void Awake()
 	{
 		_collider = GetComponent<BoxCollider2D>();
@@ -36,7 +38,7 @@ public class Button : MonoBehaviour
 			RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
 			if (hitInfo)
 				OnPress(hitInfo);
-			else if(PressAnywhere)
+			else if (PressAnywhere)
 				OnPress(hitInfo);
 		}
 	}
@@ -49,14 +51,29 @@ public class Button : MonoBehaviour
 			{
 				OnTriggerCallback(this);
 
-				if(!MultiPress)
-					OnTriggerCallback = null;
+				if (!MultiPress)
+				{
+					if (_swallow)
+						OnTriggerCallback = null;
+
+					_swallow = true;
+				}
 			}
 		}
+	}
+
+	public void DontSwallowCallback()
+	{
+		_swallow = false;
 	}
 
 	public void SetTriggerCallback(Action<object> callback)
 	{
 		OnTriggerCallback = callback;
+	}
+
+	public void RemoveTriggerCallback()
+	{
+		OnTriggerCallback = null;
 	}
 }
