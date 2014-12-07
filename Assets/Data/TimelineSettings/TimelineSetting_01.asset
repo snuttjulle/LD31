@@ -11,15 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c885baa1881425409eeb988f92b5159, type: 3}
   m_Name: TimelineSetting_01
   m_EditorClassIdentifier: 
-  MinTimeToOrder: 5
-  MaxTimeToOrder: 5
-  MinTimeAngryAboutOrder: 15
-  MaxTimeAngryAboutOrder: 15
-  MinTimeToReceiveFood: 25
-  MaxTimeToReceiveFood: 25
-  MinTimeAngryAboutFood: 35
-  MaxTimeAngryAboutFood: 35
-  MinTimeToPay: 45
-  MaxTimeToPay: 45
-  MinTimeToLeave: 55
-  MaxTimeToLeave: 55
+  MinNothingTime: 10
+  MaxNothingTime: 10
+  MinOrderTime: 10
+  MaxOrderTime: 10
+  MinOrderTimeDelay: 10
+  MaxOrderTimeDelay: 10
+  MinPrepareFoodTime: 10
+  MaxPrepareFoodTime: 10
+  MinWaitToLeaveTime: 10
+  MaxWaitToLeaveTime: 10
