@@ -77,7 +77,7 @@ public class DialogBox : MonoBehaviour
 
 	private void Show()
 	{
-		this.transform.position = new Vector3(transform.position.x, transform.position.y, -25); //the uglies of fixes, getting desperate here
+		this.transform.position = new Vector3(transform.position.x, transform.position.y, -30); //the uglies of fixes, getting desperate here
 	}
 
 	private void Init()
@@ -101,7 +101,7 @@ public class DialogBox : MonoBehaviour
 	{
 		transform.localScale = new Vector3(transform.localScale.x, 0, transform.localScale.z);
 		_time = 0.0f;
-		//_currentState = TransitionState.In;
+		_currentState = TransitionState.In;
 		Show();
 		_animator.SetTrigger("add");
 	}
@@ -110,7 +110,7 @@ public class DialogBox : MonoBehaviour
 	{
 		transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
 		_time = 0.0f;
-		//_currentState = TransitionState.Out;
+		_currentState = TransitionState.Out;
 		_animator.SetTrigger("remove");
 	}
 
@@ -137,12 +137,17 @@ public class DialogBox : MonoBehaviour
 		//{
 		//	_currentState = TransitionState.None;
 
-		//	if (_onTransitionComplete != null)
-		//	{
-		//		_onTransitionComplete(this);
-		//		_onTransitionComplete = null;
-		//	}
+		//	
 		//}
+
+		if (_animator.GetCurrentAnimatorStateInfo(0).IsName("content_holder_disappear") && _currentState == TransitionState.Out)
+		{
+			if (_onTransitionComplete != null)
+			{
+				_onTransitionComplete(this);
+				_onTransitionComplete = null;
+			}
+		}
 	}
 
 	public void SetWidth(float width)

@@ -3,18 +3,23 @@ using System.Collections;
 
 public class Kitchen : MonoBehaviour
 {
-	public DialogBox DialogBoxPrefab;
+	public PotDialogBox PotDialogBox;
 
 	private Button _button;
 
 	void Start()
 	{
 		_button = GetComponent<Button>();
-		_button.SetTriggerCallback(OnPress);
+		ActivateButton();
 	}
 
 	private void OnPress(object sender)
 	{
-		//gameObject spawn = (gameObject)Instantiate(DialogBoxPrefab, 
+		PotDialogBox.Show();
+	}
+
+	public void ActivateButton()
+	{
+		_button.SetTriggerCallback(OnPress);
 	}
 }

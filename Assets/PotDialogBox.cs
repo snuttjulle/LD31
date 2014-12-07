@@ -3,20 +3,35 @@ using System.Collections;
 
 public class PotDialogBox : MonoBehaviour
 {
-	DialogBox _dialogBox;
-	ContentHandler _content;
+	public Button CloseButton;
+	public Kitchen Kitchen;
+
+	public DialogBox CookDialogBox;
 
 	void Start()
 	{
-		_content = gameObject.transform.GetComponentInChildren<ContentHandler>();
-		_dialogBox = gameObject.transform.GetComponentInChildren<DialogBox>();
-		_dialogBox.SetHeight(70);
-		_dialogBox.SetWidth(30);
-		_dialogBox.TransitionIn();
-		_dialogBox.CloseOnFocusTap = true;
+		CookDialogBox.SetHeight(70);
+		CookDialogBox.SetWidth(50);
 	}
 
-	void Update()
+	public void Show()
 	{
+		CookDialogBox.TransitionIn();
+		CloseButton.SetTriggerCallback(CloseDialog);
+	}
+
+	public void Hide()
+	{
+		CookDialogBox.TransitionOut();
+		Kitchen.ActivateButton();
+	}
+
+	void CloseDialog(object sender)
+	{
+		CookDialogBox.TransitionOut();
+		CookDialogBox.SetOnTransitionComplete((x) =>
+		{
+			Kitchen.ActivateButton();
+		});
 	}
 }
