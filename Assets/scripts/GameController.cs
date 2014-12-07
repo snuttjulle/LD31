@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
 	public CookingDevice[] CookingDevices;
 	public Burner Burner;
 	public Fumes Fumes;
-	public DialogBox DialogBox;
 	public OverlayHandler OverlayHandler;
 
 	AnimationStateMachine _animationStateMachine;
@@ -23,10 +22,6 @@ public class GameController : MonoBehaviour
 			_animationStateMachine.SetAnimationState(AnimationStates.Cooking);
 		else if (Input.GetKeyUp(KeyCode.Q))
 			_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
-		else if (Input.GetKeyUp(KeyCode.A))
-			DialogBox.TransitionIn();
-		else if (Input.GetKeyUp(KeyCode.S))
-			DialogBox.TransitionOut();
 		else if (Input.GetKeyUp(KeyCode.D))
 			OverlayHandler.Show();
 		else if (Input.GetKeyUp(KeyCode.F))

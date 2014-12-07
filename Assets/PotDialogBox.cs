@@ -10,8 +10,12 @@ public class PotDialogBox : MonoBehaviour
 	public DialogBox CookDialogBox;
 	public DialogBox IngredientsDialogBox;
 
+	private IngredientsInventory _inventory;
+
 	void Start()
 	{
+		_inventory = Kitchen.GetInventory();
+
 		CookDialogBox.SetHeight(70);
 		CookDialogBox.SetWidth(50);
 
@@ -21,6 +25,11 @@ public class PotDialogBox : MonoBehaviour
 
 	public void Show()
 	{
+		foreach (Ingredient ing in _inventory.Collection.IngredientCollection)
+		{
+			Debug.Log(ing.Name);
+		}
+
 		CookDialogBox.TransitionIn();
 		CancelButton.SetTriggerCallback(CloseDialog);
 
