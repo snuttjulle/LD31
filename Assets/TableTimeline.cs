@@ -14,13 +14,6 @@ public class TableTimeline : MonoBehaviour
 
 	void Awake()
 	{
-		TableEvents = new Queue<TableEvent>();
-
-		//TableEvents.Enqueue(new TableEvent(5, TableEventType.Order));
-		//TableEvents.Enqueue(new TableEvent(10, TableEventType.HasOrderedYet));
-		//TableEvents.Enqueue(new TableEvent(15, TableEventType.HasFoodYet));
-		//TableEvents.Enqueue(new TableEvent(20, TableEventType.Pay));
-		//TableEvents.Enqueue(new TableEvent(25, TableEventType.HasYetToPay));
 	}
 
 	void Update()

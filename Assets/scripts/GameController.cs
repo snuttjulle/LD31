@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 	void Start()
 	{
 		_animationStateMachine = new AnimationStateMachine(this);
+		SetupLevel(0);
 	}
 
 	void Update()
@@ -37,12 +38,55 @@ public class GameController : MonoBehaviour
 
 	public void SetupLevel(int level)
 	{
-		FoodRequest request = new FoodRequest();
+		Level data = Kitchen.LoadLevelData(level);
 
-		List<Food> foods = new List<Food>();
-		
-		//foods.Add(new Food(
-		//Tables[0].InitTable(
+		//disable hitboxes for tables
+		foreach (Table table in Tables)
+		{
+			table.GetComponent<BoxCollider2D>().enabled = false;
+		}
+
+		//randomize table
+		for (int i = 0; i < data.ActiveTables.Count; i++)
+		{
+			//Tables[i].GetComponent<BoxCollider2D>().enabled = true;
+			Tables[i].Requests = new FoodRequest(data.ActiveTables[i], data.Dishes);
+			
+			//setup timeline
+			Queue<TableEvent> events = new Queue<TableEvent>();
+
+			float timestamp = 0.0f;
+			int moment;
+
+			//nothing
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinNothingTime, data.TimelineSettings.MaxNothingTime);
+			timestamp += moment;
+			events.Enqueue(new TableEvent(timestamp, TableEventType.Order));
+
+			//order
+			moment= RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTime, data.TimelineSettings.MaxOrderTime);
+			timestamp += moment;
+			events.Enqueue(new TableEvent(timestamp, TableEventType.HasOrderedYet));
+
+			//order delay
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTimeDelay, data.TimelineSettings.MinOrderTimeDelay);
+			timestamp += moment;
+			events.Enqueue(new TableEvent(timestamp, TableEventType.HasFoodYet));
+
+			//food
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinPrepareFoodTime, data.TimelineSettings.MaxPrepareFoodTime);
+			timestamp += moment;
+			events.Enqueue(new TableEvent(timestamp, TableEventType.Pay));
+
+			//pay
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinWaitToLeaveTime, data.TimelineSettings.MaxWaitToLeaveTime);
+			timestamp += moment;
+			events.Enqueue(new TableEvent(timestamp, TableEventType.Leave));
+
+			//leave
+
+			Tables[i].InitTable(new FoodRequest(data.ActiveTables[i], data.Dishes), events);
+		}
 	}
 
 	public void StartProgressBar(float time, Vector3 position, Action<object> callback)
@@ -51,7 +95,7 @@ public class GameController : MonoBehaviour
 		Vector3 pos = progressBar.transform.position;
 		pos.z = -15;
 		progressBar.transform.position = pos;
-		
+
 		progressBar.ProgressTime = time;
 		progressBar.SetCallback(callback);
 		progressBar.Start();

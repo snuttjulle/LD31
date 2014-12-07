@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum TableEventType { Order, HasOrderedYet, HasFoodYet, Pay, HasYetToPay }
+public enum TableEventType { Order, HasOrderedYet, HasFoodYet, Pay, HasYetToPay, Leave }
 
 public class TableEvent
 {

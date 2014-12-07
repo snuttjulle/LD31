@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public enum NoticeType { OrderFood, Pay }
 
@@ -13,6 +14,8 @@ public class NoticeHandler : MonoBehaviour
 	private Button _button;
 	private FoodRequest _requests;
 
+	private Action<object> _onPressCallback;
+
 	void Start()
 	{
 		_button = GetComponent<Button>();
@@ -21,12 +24,18 @@ public class NoticeHandler : MonoBehaviour
 
 	void Update()
 	{
-		
+
 	}
 
 	void OnPress(object sender)
 	{
 		Debug.Log("Press:" + sender);
+
+		if (_onPressCallback != null)
+		{
+			_onPressCallback(this);
+			_onPressCallback = null;
+		}
 
 		GameObject spawn = (GameObject)Instantiate(DialogBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
 		DialogBox box = spawn.GetComponent<DialogBox>();
@@ -54,5 +63,10 @@ public class NoticeHandler : MonoBehaviour
 	public void SetupRequestData(FoodRequest requests)
 	{
 		_requests = requests;
+	}
+
+	public void SetOnNoticePressCallback(Action<object> callback)
+	{
+		_onPressCallback = callback;
 	}
 }

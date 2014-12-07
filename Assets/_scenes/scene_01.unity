@@ -291,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &34073686
@@ -1090,7 +1089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &291224850
@@ -1727,7 +1725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &443647903
@@ -3815,7 +3812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &933701108
@@ -5748,7 +5744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &1385339372
@@ -5827,7 +5822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 0}
 --- !u!114 &1389233283
 MonoBehaviour:
@@ -5841,7 +5835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &1389233284
@@ -7944,7 +7937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Requests: {fileID: 0}
   NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
     type: 2}
 --- !u!61 &1886105092

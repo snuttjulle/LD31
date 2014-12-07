@@ -11,6 +11,8 @@ public class Kitchen : MonoBehaviour
 	private Button _button;
 	private Food _result;
 
+	private Level _levelData;
+
 	private bool _isCooking = false;
 
 	void Start()
@@ -27,6 +29,12 @@ public class Kitchen : MonoBehaviour
 			((Button)sender).DontSwallowCallback();
 	}
 
+	public Level LoadLevelData(int level)
+	{
+		_levelData = Database.GetLevelData(level);
+		return _levelData;
+	}
+
 	public void ActivateButton()
 	{
 		_button.SetTriggerCallback(OnPress);
@@ -34,7 +42,7 @@ public class Kitchen : MonoBehaviour
 
 	public IngredientsInventory GetInventory()
 	{
-		return new IngredientsInventory(Database.IngredientCollection[0]); //TODO: use level here instead of 0
+		return new IngredientsInventory(_levelData.IngredientCollection);
 	}
 
 	public void Cook(IngredientCollections ingredients)

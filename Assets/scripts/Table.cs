@@ -5,12 +5,27 @@ using System.Collections.Generic;
 [RequireComponent(typeof(BoxCollider2D), typeof(TableTimeline))]
 public class Table : MonoBehaviour
 {
-	public FoodRequest Requests;
+	private FoodRequest _requests;
+	public FoodRequest Requests
+	{
+		get
+		{
+			return _requests;
+		}
+
+		set
+		{
+			_requests = value;
+			SetupFoodRequests(_requests);
+		}
+	}
 	public NoticeHandler NoticeHandlerPrefab;
 
 	private NoticeHandler _activeNoticeHandler;
 	private List<bool> _deliveredFood;
 	private bool _hasPayed;
+
+	private int _incorrectDelivery;
 
 	private bool FoodFullyDelivered
 	{
@@ -69,8 +84,16 @@ public class Table : MonoBehaviour
 				}
 				break;
 			case TableEventType.Pay:
-				Debug.Log("Table wants to pay");
-				AlertOfRequest(NoticeType.Pay);
+				if (_activeNoticeHandler != null)
+				{
+					if (_activeNoticeHandler.NoticeType == NoticeType.OrderFood)
+						Leave();
+				}
+				else
+				{
+					Debug.Log("Table wants to pay");
+					AlertOfRequest(NoticeType.Pay);
+				}
 				break;
 
 			case TableEventType.HasYetToPay:
@@ -80,16 +103,36 @@ public class Table : MonoBehaviour
 					//-1 point
 				}
 				break;
+
+			case TableEventType.Leave:
+				if (!_hasPayed)
+					Debug.Log("Didn't paying");
+					Leave();
+				break;
 		}
+	}
+
+	private void Leave()
+	{
+		if (_activeNoticeHandler != null)
+			_activeNoticeHandler.ForceClose();
+
+		GetComponent<BoxCollider2D>().enabled = false;
+
+		Debug.Log("The Table left");
 	}
 
 	public void SetupFoodRequests(FoodRequest requests)
 	{
-		Requests = requests;
 		_deliveredFood = new List<bool>();
 
 		for (int i = 0; i < Requests.RequestedFood.Count; i++)
 			_deliveredFood.Add(false);
+	}
+
+	private void OnNoticePress(object sender)
+	{
+		GetComponent<BoxCollider2D>().enabled = true;
 	}
 
 	public void AlertOfRequest(NoticeType type)
@@ -103,6 +146,9 @@ public class Table : MonoBehaviour
 		notice.SetupRequestData(Requests);
 		notice.NoticeType = type;
 
+		if (type == NoticeType.OrderFood)
+			notice.SetOnNoticePressCallback(OnNoticePress);
+
 		_activeNoticeHandler = notice;
 	}
 
@@ -110,9 +156,23 @@ public class Table : MonoBehaviour
 	{
 		Debug.Log(dish.Name + " was delivered to a table");
 
-		if (Requests.RequestedFood.Contains(dish))
-			_deliveredFood[Requests.RequestedFood.IndexOf(dish)] = true;
-		else
-			Debug.Log("Delivered the wrong food");
+		for (int i = 0; i < Requests.RequestedFood.Count; i++)
+		{
+			if (Requests.RequestedFood[i].Name == dish.Name && !_deliveredFood[i])
+			{
+				_deliveredFood[i] = true;
+
+				if (FoodFullyDelivered)
+				{
+					Debug.Log("Fully delivered!");
+					GetComponent<BoxCollider2D>().enabled = false;
+				}
+
+				return;
+			}
+		}
+
+		Debug.Log("Delivered the wrong food");
+		_incorrectDelivery++;
 	}
 }
