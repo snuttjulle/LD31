@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
 	public Fumes Fumes;
 	public OverlayHandler OverlayHandler;
 	public ProgressBar ProgressBarPrefab;
+	public List<Table> Tables;
+	public Kitchen Kitchen;
 
 	AnimationStateMachine _animationStateMachine;
 
@@ -30,6 +33,16 @@ public class GameController : MonoBehaviour
 			OverlayHandler.Hide();
 		else if (Input.GetKeyUp(KeyCode.T))
 			Chef.GiveThumbsUp();
+	}
+
+	public void SetupLevel(int level)
+	{
+		FoodRequest request = new FoodRequest();
+
+		List<Food> foods = new List<Food>();
+		
+		//foods.Add(new Food(
+		//Tables[0].InitTable(
 	}
 
 	public void StartProgressBar(float time, Vector3 position, Action<object> callback)

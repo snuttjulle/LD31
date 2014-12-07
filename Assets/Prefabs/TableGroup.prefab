@@ -154,6 +154,7 @@ GameObject:
   - 4: {fileID: 400018}
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: TableGroup
   m_TagString: Table
@@ -339,6 +340,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000

@@ -62,11 +62,11 @@ public class IngredientsInventory
 	}
 
 	//Let's reset everything instead, much easier for the GUI (for me)
-	public void RemoveIngredientFromPot(Ingredient ingredient)
-	{
-		if (_ingredientsInPot.IngredientCollection.Contains(ingredient))
-		{
-			_ingredientsInPot.IngredientCollection.Remove(ingredient);
-		}
-	}
+	//public void RemoveIngredientFromPot(Ingredient ingredient)
+	//{
+	//	if (_ingredientsInPot.IngredientCollection.Contains(ingredient))
+	//	{
+	//		_ingredientsInPot.IngredientCollection.Remove(ingredient);
+	//	}
+	//}
 }

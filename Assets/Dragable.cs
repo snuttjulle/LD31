@@ -62,6 +62,7 @@ public class Dragable : MonoBehaviour //TODO: TYPO!!!
 			{
 				Table table = hit.transform.gameObject.GetComponent<Table>();
 				transform.parent.GetComponent<DishDelivery>().DeliverFood(table);
+				_pressing = true; //don't move the thing
 			}
 		}
 	}

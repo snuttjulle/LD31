@@ -3,18 +3,33 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
-public class IngredientCollections : ScriptableObject
+public class IngredientCollections
 {
-	public List<Ingredient> IngredientCollection;
+	private List<Ingredient> _ingredientCollection;
+	public List<Ingredient> IngredientCollection { get { return _ingredientCollection; } }
+
+	public IngredientCollections(List<Food> dishes)
+	{
+		_ingredientCollection = new List<Ingredient>();
+
+		foreach (Food food in dishes)
+		{
+			foreach (Ingredient ing in food.Ingredients)
+			{
+				if (!_ingredientCollection.Contains(ing))
+					_ingredientCollection.Add(ing);
+			}
+		}
+	}
 
 	public IngredientCollections()
 	{
-		IngredientCollection = new List<Ingredient>();
+		_ingredientCollection = new List<Ingredient>();
 	}
 
-	[MenuItem("Assets/Create/IngredientCollections")]
-	public static void CreateAsset()
+	public void AddIngredient(Ingredient ingredient)
 	{
-		ScriptableObjectUtility.CreateAsset<IngredientCollections>();
+		if (!_ingredientCollection.Contains(ingredient))
+			_ingredientCollection.Add(ingredient);
 	}
 }

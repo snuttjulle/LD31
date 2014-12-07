@@ -237,8 +237,9 @@ GameObject:
   - 4: {fileID: 34073682}
   - 61: {fileID: 34073686}
   - 114: {fileID: 34073685}
+  - 114: {fileID: 34073683}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_06
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,6 +267,18 @@ Transform:
   - {fileID: 725287688}
   m_Father: {fileID: 1705897896}
   m_RootOrder: 2
+--- !u!114 &34073683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 508929618}
+  m_GameObject: {fileID: 34073681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &34073685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &34073686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -477,6 +493,15 @@ MonoBehaviour:
   Fumes: {fileID: 529949696}
   OverlayHandler: {fileID: 1019244894}
   ProgressBarPrefab: {fileID: 11400000, guid: 5c4d75cd845d71a47b8d8a54d62f8cd9, type: 2}
+  Tables:
+  - {fileID: 1886105091}
+  - {fileID: 291224849}
+  - {fileID: 1389233283}
+  - {fileID: 933701107}
+  - {fileID: 1385339371}
+  - {fileID: 34073685}
+  - {fileID: 443647902}
+  Kitchen: {fileID: 1146576847}
 --- !u!4 &86113900
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,8 +1036,9 @@ GameObject:
   - 4: {fileID: 291224846}
   - 61: {fileID: 291224850}
   - 114: {fileID: 291224849}
+  - 114: {fileID: 291224847}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_02
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1040,6 +1066,18 @@ Transform:
   - {fileID: 336711307}
   m_Father: {fileID: 1705897896}
   m_RootOrder: 5
+--- !u!114 &291224847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 557770241}
+  m_GameObject: {fileID: 291224845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &291224849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,6 +1090,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &291224850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1427,6 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f73e23ad578164480ab84a38f76c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Kitchen: {fileID: 1146576847}
   DragInstructionsPrefab: {fileID: 11400002, guid: 8647c1571e3319447a49f14e1b9b4720,
     type: 2}
   InstructionsHolder: {fileID: 1019094952}
@@ -1631,8 +1673,9 @@ GameObject:
   - 4: {fileID: 443647899}
   - 61: {fileID: 443647903}
   - 114: {fileID: 443647902}
+  - 114: {fileID: 443647900}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_07
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1660,6 +1703,18 @@ Transform:
   - {fileID: 1487605819}
   m_Father: {fileID: 1705897896}
   m_RootOrder: 3
+--- !u!114 &443647900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 2017358032}
+  m_GameObject: {fileID: 443647898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &443647902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,6 +1727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &443647903
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2005,6 +2063,10 @@ Prefab:
       propertyPath: m_TagString
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
   m_RootGameObject: {fileID: 34073681}
@@ -2287,6 +2349,10 @@ Prefab:
     - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
       propertyPath: m_TagString
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
@@ -2803,6 +2869,10 @@ Prefab:
       propertyPath: m_TagString
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
   m_RootGameObject: {fileID: 933701103}
@@ -3007,6 +3077,10 @@ Prefab:
     - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
       propertyPath: m_TagString
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
@@ -3293,6 +3367,10 @@ Prefab:
       propertyPath: m_Name
       value: CookedDishBox
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 1915715636d61fe4f9dbd5d307299138, type: 2}
+      propertyPath: Kitchen
+      value: 
+      objectReference: {fileID: 1146576847}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1915715636d61fe4f9dbd5d307299138, type: 2}
   m_RootGameObject: {fileID: 379686213}
@@ -3633,7 +3711,7 @@ MonoBehaviour:
   - {fileID: 894746972}
   - {fileID: 792921732}
   Arrow: {fileID: 1341039365}
-  Size: {x: 0, y: 0}
+  Size: {x: 10, y: 10}
 --- !u!212 &931793929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3683,8 +3761,9 @@ GameObject:
   - 4: {fileID: 933701104}
   - 61: {fileID: 933701108}
   - 114: {fileID: 933701107}
+  - 114: {fileID: 933701105}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_04
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3712,6 +3791,18 @@ Transform:
   - {fileID: 7335947}
   m_Father: {fileID: 1705897896}
   m_RootOrder: 0
+--- !u!114 &933701105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 705538912}
+  m_GameObject: {fileID: 933701103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &933701107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3724,6 +3815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &933701108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4085,6 +4179,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ac03ea3499a66fe4c9d8231a026483ea, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac03ea3499a66fe4c9d8231a026483ea, type: 2}
   m_RootGameObject: {fileID: 1806936722}
@@ -4317,7 +4415,7 @@ Transform:
   m_PrefabInternal: {fileID: 822980962}
   m_GameObject: {fileID: 1019094950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -130}
+  m_LocalPosition: {x: 0, y: 20, z: -130}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 379686214}
@@ -4698,7 +4796,7 @@ GameObject:
   - 114: {fileID: 1146576847}
   m_Layer: 0
   m_Name: Kitchen
-  m_TagString: Untagged
+  m_TagString: Kitchen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5517,6 +5615,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 50fc61d8e51aa0e40a73386d4cd6b0bd, type: 2}
+      propertyPath: m_TagString
+      value: Kitchen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50fc61d8e51aa0e40a73386d4cd6b0bd, type: 2}
   m_RootGameObject: {fileID: 1146576843}
@@ -5573,6 +5675,10 @@ Prefab:
       propertyPath: m_TagString
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_03
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
   m_RootGameObject: {fileID: 1389233279}
@@ -5588,8 +5694,9 @@ GameObject:
   - 4: {fileID: 1385339368}
   - 61: {fileID: 1385339372}
   - 114: {fileID: 1385339371}
+  - 114: {fileID: 1385339369}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_05
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5617,6 +5724,18 @@ Transform:
   - {fileID: 1821524491}
   m_Father: {fileID: 1705897896}
   m_RootOrder: 1
+--- !u!114 &1385339369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 726171911}
+  m_GameObject: {fileID: 1385339367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1385339371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5629,6 +5748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &1385339372
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5651,10 +5773,11 @@ GameObject:
   - 4: {fileID: 1389233280}
   - 61: {fileID: 1389233284}
   - 114: {fileID: 1389233283}
+  - 114: {fileID: 1389233285}
   - 114: {fileID: 1389233282}
   - 61: {fileID: 1389233281}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_03
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5704,6 +5827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 0}
 --- !u!114 &1389233283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5716,6 +5841,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &1389233284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5728,6 +5856,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 55, y: 45}
   m_Center: {x: 0, y: 0}
+--- !u!114 &1389233285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 1368167571}
+  m_GameObject: {fileID: 1389233279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1401260282
 GameObject:
   m_ObjectHideFlags: 0
@@ -7229,7 +7369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1806936723
 Transform:
   m_ObjectHideFlags: 0
@@ -7269,6 +7409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NoticeGraphics: {fileID: 1135978169}
   DialogBoxPrefab: {fileID: 100018, guid: 41c737e4c9f09244a90001cc0833d204, type: 2}
+  NoticeType: 0
 --- !u!114 &1806936726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7749,8 +7890,9 @@ GameObject:
   - 4: {fileID: 1886105088}
   - 61: {fileID: 1886105092}
   - 114: {fileID: 1886105091}
+  - 114: {fileID: 1886105089}
   m_Layer: 0
-  m_Name: TableGroup
+  m_Name: TableGroup_01
   m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7778,6 +7920,18 @@ Transform:
   - {fileID: 1459653261}
   m_Father: {fileID: 1705897896}
   m_RootOrder: 4
+--- !u!114 &1886105089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0e53c988de6d4e943a9a6ace35618c54,
+    type: 2}
+  m_PrefabInternal: {fileID: 2069840741}
+  m_GameObject: {fileID: 1886105087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49030c88a2c2b544da81dec32417b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1886105091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7790,6 +7944,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2677fdef7a03eaf45835bdbd63e3d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Requests: {fileID: 0}
+  NoticeHandlerPrefab: {fileID: 11400002, guid: ac03ea3499a66fe4c9d8231a026483ea,
+    type: 2}
 --- !u!61 &1886105092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8164,7 +8321,7 @@ MonoBehaviour:
   - {fileID: 2129516898}
   - {fileID: 1916301901}
   Arrow: {fileID: 2142362466}
-  Size: {x: 0, y: 0}
+  Size: {x: 10, y: 10}
 --- !u!212 &1952517039
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8342,6 +8499,10 @@ Prefab:
       propertyPath: m_TagString
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_07
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
   m_RootGameObject: {fileID: 443647898}
@@ -8495,6 +8656,10 @@ Prefab:
     - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
       propertyPath: m_TagString
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}
+      propertyPath: m_Name
+      value: TableGroup_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e53c988de6d4e943a9a6ace35618c54, type: 2}

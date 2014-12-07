@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public enum NoticeType { OrderFood, Pay }
 
 public class NoticeHandler : MonoBehaviour
 {
 	public Animator NoticeGraphics;
 	public GameObject DialogBoxPrefab;
+	public NoticeType NoticeType;
 
 	private Button _button;
+	private FoodRequest _requests;
 
 	void Start()
 	{
@@ -34,8 +39,20 @@ public class NoticeHandler : MonoBehaviour
 
 	void OnDialogBoxClose(object sender)
 	{
-		Debug.Log("Notice dialog closed");
-		NoticeGraphics.SetTrigger("remove");
+		ForceClose();
+		((DialogBox)sender).gameObject.AddComponent<DestroyAfterTime>();
 		//_button.SetTriggerCallback(OnPress);
+	}
+
+	public void ForceClose()
+	{
+		NoticeGraphics.SetTrigger("remove");
+		var destroy = gameObject.AddComponent<DestroyAfterTime>();
+		destroy.ObjectToDestroy = gameObject;
+	}
+
+	public void SetupRequestData(FoodRequest requests)
+	{
+		_requests = requests;
 	}
 }
