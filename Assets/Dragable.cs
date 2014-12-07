@@ -53,7 +53,16 @@ public class Dragable : MonoBehaviour //TODO: TYPO!!!
 		_dropPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + _offset;
 		_dropPosition.z = _startPosition.z;
 		_pressing = false;
-		//raycast to see if hit
 
+		//raycast to see if hit
+		RaycastHit2D[] hitInfo = Physics2D.RaycastAll(_dropPosition, Vector2.zero);
+		foreach (var hit in hitInfo)
+		{
+			if (hit.transform.tag == "Table")
+			{
+				Table table = hit.transform.gameObject.GetComponent<Table>();
+				transform.parent.GetComponent<DishDelivery>().DeliverFood(table);
+			}
+		}
 	}
 }

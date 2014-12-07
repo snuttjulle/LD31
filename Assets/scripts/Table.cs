@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Table : MonoBehaviour
 {
-	public FoodRequest Request;
-
 	void Update()
 	{
 
@@ -13,5 +12,10 @@ public class Table : MonoBehaviour
 	public void AlertOfRequest()
 	{
  		
+	}
+
+	public void DeliverDish(Food dish)
+	{
+		Debug.Log(dish.Name + " was delivered to a table");
 	}
 }

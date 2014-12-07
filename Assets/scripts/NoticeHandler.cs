@@ -22,7 +22,6 @@ public class NoticeHandler : MonoBehaviour
 	void OnPress(object sender)
 	{
 		Debug.Log("Press:" + sender);
-		NoticeGraphics.SetTrigger("remove");
 
 		GameObject spawn = (GameObject)Instantiate(DialogBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
 		DialogBox box = spawn.GetComponent<DialogBox>();
@@ -36,6 +35,7 @@ public class NoticeHandler : MonoBehaviour
 	void OnDialogBoxClose(object sender)
 	{
 		Debug.Log("Notice dialog closed");
+		NoticeGraphics.SetTrigger("remove");
 		//_button.SetTriggerCallback(OnPress);
 	}
 }

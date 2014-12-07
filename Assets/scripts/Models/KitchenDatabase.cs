@@ -11,7 +11,7 @@ public class KitchenDatabase : ScriptableObject
 
 	public Food GetDish(IngredientCollections ingredients)
 	{
-		return null;
+		return Dishes[0];
 	}
 
 	[MenuItem("Assets/Create/KitchenDatabase")]
