@@ -26,5 +26,7 @@ public class GameController : MonoBehaviour
 			OverlayHandler.Show();
 		else if (Input.GetKeyUp(KeyCode.F))
 			OverlayHandler.Hide();
+		else if (Input.GetKeyUp(KeyCode.T))
+			Chef.GiveThumbsUp();
 	}
 }

@@ -45,6 +45,10 @@ TextureImporter:
     21300080: button_cook
     21300082: button_cancel
     21300084: KitchenAtlas_42
+    21300086: button_plus
+    21300088: button_minus
+    21300090: button_plus_small
+    21300092: button_minus_small
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -513,6 +517,46 @@ TextureImporter:
         y: 123
         width: 24
         height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_plus
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 120
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_minus
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 120
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_plus_small
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 106
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: button_minus_small
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 106
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

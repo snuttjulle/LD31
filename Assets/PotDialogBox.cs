@@ -6,9 +6,10 @@ public class PotDialogBox : MonoBehaviour
 	public Button CookButton;
 	public Button CancelButton;
 	public Kitchen Kitchen;
-
 	public DialogBox CookDialogBox;
 	public DialogBox IngredientsDialogBox;
+	public ContentHandler IngredientsContentHandler;
+	public GameObject TextPrefab;
 
 	private IngredientsInventory _inventory;
 
@@ -25,9 +26,27 @@ public class PotDialogBox : MonoBehaviour
 
 	public void Show()
 	{
+		float listPosY = 33;
+		float listPosX = -53;
 		foreach (Ingredient ing in _inventory.Collection.IngredientCollection)
 		{
 			Debug.Log(ing.Name);
+			var label = (GameObject)Instantiate(TextPrefab, IngredientsContentHandler.transform.position, new Quaternion());
+			label.transform.parent = IngredientsContentHandler.transform;
+			Vector3 pos = label.transform.localPosition;
+			pos.x = listPosX;
+			pos.z = -15;
+			pos.y = listPosY;
+			listPosY -= 15;
+			label.transform.localPosition = pos;
+			label.GetComponent<TextMesh>().text = ing.Name;
+
+			if (listPosY < -50)
+			{
+				listPosY = 48;
+				listPosX = 15;
+			}
+
 		}
 
 		CookDialogBox.TransitionIn();
