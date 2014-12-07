@@ -11,6 +11,8 @@ public class DialogBox : MonoBehaviour
 	public GameObject[] BottomRow;
 	public GameObject Arrow;
 
+	public Vector2 Size = new Vector2(10, 10);
+
 	private bool _closeOnFocusTap = false;
 	public bool CloseOnFocusTap
 	{
@@ -57,6 +59,13 @@ public class DialogBox : MonoBehaviour
 
 		_collider = GetComponent<BoxCollider2D>();
 		_animator = GetComponent<Animator>();
+
+		if (Size.x > default_size)
+			SetWidth(Size.x);
+
+		if (Size.y > default_size)
+			SetHeight(Size.y);
+
 		CalculateColliderSize();
 	}
 
@@ -116,30 +125,6 @@ public class DialogBox : MonoBehaviour
 
 	void Update()
 	{
-		//if (_currentState == TransitionState.None)
-		//	return;
-
-		//float from = 1.0f; float to = 1.0f;
-		//_time += Time.deltaTime * transition_time;
-
-		//if (_currentState == TransitionState.In)
-		//	from = 0.0f;
-		//else if (_currentState == TransitionState.Out)
-		//	to = 0.0f;
-
-		//float value = MathUtils.Berp(from, to, _time);
-		//transform.localScale = new Vector3(transform.localScale.x, value, transform.localScale.z);
-
-		//if (_time > 1.0f && _currentState == TransitionState.Out)
-		//	Hide();
-
-		//if (_time > 1.0f)
-		//{
-		//	_currentState = TransitionState.None;
-
-		//	
-		//}
-
 		if (_animator.GetCurrentAnimatorStateInfo(0).IsName("content_holder_disappear") && _currentState == TransitionState.Out)
 		{
 			if (_onTransitionComplete != null)
@@ -153,7 +138,7 @@ public class DialogBox : MonoBehaviour
 	public void SetWidth(float width)
 	{
 		if (width < 10)
-			throw new Exception("Too width");
+			throw new Exception("Too width"); //I love this error message
 
 		_setWidth = width * 2 + default_size;
 		CalculateColliderSize();

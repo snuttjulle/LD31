@@ -6,10 +6,12 @@ public class NoticeHandler : MonoBehaviour
 	public Animator NoticeGraphics;
 	public GameObject DialogBoxPrefab;
 
+	private Button _button;
+
 	void Start()
 	{
-		Button button = GetComponent<Button>();
-		button.SetTriggerCallback(OnPress);
+		_button = GetComponent<Button>();
+		_button.SetTriggerCallback(OnPress);
 	}
 
 	void Update()
@@ -28,5 +30,12 @@ public class NoticeHandler : MonoBehaviour
 		box.SetHeight(10);
 		box.CloseOnFocusTap = true;
 		box.TransitionIn();
+		box.SetOnTransitionComplete(OnDialogBoxClose);
+	}
+
+	void OnDialogBoxClose(object sender)
+	{
+		Debug.Log("Notice dialog closed");
+		//_button.SetTriggerCallback(OnPress);
 	}
 }

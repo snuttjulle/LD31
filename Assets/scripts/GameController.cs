@@ -48,4 +48,9 @@ public class GameController : MonoBehaviour
 	{
 		_animationStateMachine.SetAnimationState(AnimationStates.Cooking);
 	}
+
+	public void UnCook()
+	{
+		_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
+	}
 }

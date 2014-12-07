@@ -74,7 +74,8 @@ public class PotDialogBox : MonoBehaviour
 		if (_inventory.NumIngredientsInPot > 0)
 		{
 			Debug.Log("Let's cook!");
-			Hide();
+			CookDialogBox.TransitionOut();
+			IngredientsDialogBox.TransitionOut();
 			Kitchen.Cook(_inventory.IngredientsInPot);
 			_inventory.NewPot();
 		}
