@@ -7,6 +7,11 @@ public class IngredientCollections : ScriptableObject
 {
 	public List<Ingredient> IngredientCollection;
 
+	public IngredientCollections()
+	{
+		IngredientCollection = new List<Ingredient>();
+	}
+
 	[MenuItem("Assets/Create/IngredientCollections")]
 	public static void CreateAsset()
 	{

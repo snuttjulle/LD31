@@ -6,6 +6,7 @@ using System;
 public class Button : MonoBehaviour
 {
 	public bool PressAnywhere { get; set; }
+	public bool MultiPress { get; set; }
 
 	Action<object> OnTriggerCallback;
 	BoxCollider2D _collider;
@@ -47,7 +48,9 @@ public class Button : MonoBehaviour
 			if (OnTriggerCallback != null)
 			{
 				OnTriggerCallback(this);
-				OnTriggerCallback = null;
+
+				if(!MultiPress)
+					OnTriggerCallback = null;
 			}
 		}
 	}

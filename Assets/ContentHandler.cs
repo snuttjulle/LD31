@@ -3,7 +3,13 @@ using System.Collections;
 
 public class ContentHandler : MonoBehaviour
 {
-	void Start()
+
+
+	public void CleanContent()
 	{
+		foreach (Transform child in transform)
+		{
+			Object.Destroy(child);
+		}
 	}
 }
