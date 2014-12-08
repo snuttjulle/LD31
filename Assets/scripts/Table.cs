@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(TableTimeline))]
 public class Table : MonoBehaviour
@@ -24,12 +25,14 @@ public class Table : MonoBehaviour
 	private NoticeHandler _activeNoticeHandler;
 	private List<bool> _deliveredFood;
 	private bool _hasPayed;
+	private bool _hasLeft;
 
 	private int _incorrectDelivery;
 
 	private TableTimeline _timeline;
 
 	private GameController _controller;
+	private Action<object> _onLeaveCallback;
 
 	private bool FoodFullyDelivered
 	{
@@ -61,6 +64,17 @@ public class Table : MonoBehaviour
 		SetupFoodRequests(request);
 		_timeline.TableEvents = events;
 		_timeline.Reset();
+		_hasLeft = false;
+		_hasPayed = false;
+		_incorrectDelivery = 0;
+	}
+
+	public void SetupFoodRequests(FoodRequest requests)
+	{
+		_deliveredFood = new List<bool>();
+
+		for (int i = 0; i < Requests.RequestedFood.Count; i++)
+			_deliveredFood.Add(false);
 	}
 
 	public void UpdateTime(float time)
@@ -118,15 +132,20 @@ public class Table : MonoBehaviour
 				break;
 
 			case TableEventType.Leave:
-				if (!_hasPayed)
-					Debug.Log("Didn't pay");
-				Leave();
+				if (!_hasLeft)
+				{
+					if (!_hasPayed)
+						Debug.Log("Didn't pay");
+					Leave();
+				}
 				break;
 		}
 	}
 
 	private void Leave()
 	{
+		_hasLeft = true;
+
 		if (_activeNoticeHandler != null)
 			_activeNoticeHandler.ForceClose();
 
@@ -135,13 +154,7 @@ public class Table : MonoBehaviour
 		Debug.Log("The Table left");
 	}
 
-	public void SetupFoodRequests(FoodRequest requests)
-	{
-		_deliveredFood = new List<bool>();
-
-		for (int i = 0; i < Requests.RequestedFood.Count; i++)
-			_deliveredFood.Add(false);
-	}
+	
 
 	private void OnNoticePress(object sender)
 	{
@@ -175,7 +188,7 @@ public class Table : MonoBehaviour
 
 		Vector3 pos = transform.position + new Vector3(0, 20, 0);
 		pos.z = -10;
-		NoticeHandler notice = (NoticeHandler)Object.Instantiate(NoticeHandlerPrefab, pos, new Quaternion());
+		NoticeHandler notice = (NoticeHandler)UnityEngine.Object.Instantiate(NoticeHandlerPrefab, pos, new Quaternion());
 		notice.SetupRequestData(Requests);
 		notice.NoticeType = type;
 
@@ -206,5 +219,10 @@ public class Table : MonoBehaviour
 
 		Debug.Log("Delivered the wrong food");
 		_incorrectDelivery++;
+	}
+
+	public void SetLeaveCallback(Action<object> callback)
+	{
+		_onLeaveCallback = callback;
 	}
 }

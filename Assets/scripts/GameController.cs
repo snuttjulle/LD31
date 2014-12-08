@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 	public Kitchen Kitchen;
 	public GameObject CoinPrefab;
 	public GameObject AngryFacePrefab;
+	public DayScreen DayScreen;
 
 	public Score Score { get; private set; }
 
@@ -24,13 +25,13 @@ public class GameController : MonoBehaviour
 	private bool _runDay = false;
 
 	private uint _day;
+	public uint Day { get { return _day; } }
 
 	void Start()
 	{
 		Score = new Score();
-		_day = 0;
 		_animationStateMachine = new AnimationStateMachine(this);
-		SetupLevel((int)_day);
+		SetupLevel(0);
 	}
 
 	void Update()
@@ -58,11 +59,19 @@ public class GameController : MonoBehaviour
 			table.UpdateTime(_timer);
 
 		if (_timer > _dayLength)
+		{
 			Debug.Log("The day is over!");
+			_runDay = false;
+			_day++;
+			DayScreen.UpdateText();
+			DayScreen.gameObject.SetActive(true);
+		}
 	}
 
 	public void SetupLevel(int level)
 	{
+		_day = (uint)level;
+		DayScreen.UpdateText();
 		Level data = Kitchen.LoadLevelData(level);
 		_dayLength = 0; //reset day
 
@@ -151,6 +160,7 @@ public class GameController : MonoBehaviour
 	{
 		Score.Critiques += amount;
 		GameObject obj = (GameObject) UnityEngine.Object.Instantiate(AngryFacePrefab, table.transform.position, new Quaternion());
+		DayScreen.UpdateText();
 		Debug.Log("Critiques: " + Score.Critiques);
 	}
 
@@ -158,6 +168,7 @@ public class GameController : MonoBehaviour
 	{
 		Score.Money += amount;
 		UnityEngine.Object.Instantiate(CoinPrefab, table.transform.position, new Quaternion());
+		DayScreen.UpdateText();
 		Debug.Log("Money: " + Score.Money);
 	}
 }
