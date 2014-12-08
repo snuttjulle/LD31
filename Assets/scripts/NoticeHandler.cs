@@ -8,7 +8,7 @@ public enum NoticeType { OrderFood, Pay }
 public class NoticeHandler : MonoBehaviour
 {
 	public Animator NoticeGraphics;
-	public GameObject DialogBoxPrefab;
+	public FoodOrderNotice OrderBoxPrefab;
 	public NoticeType NoticeType;
 
 	private Button _button;
@@ -39,10 +39,12 @@ public class NoticeHandler : MonoBehaviour
 
 		if (NoticeType == NoticeType.OrderFood)
 		{
-			GameObject spawn = (GameObject)Instantiate(DialogBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
+			FoodOrderNotice spawn = (FoodOrderNotice)Instantiate(OrderBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
+			spawn.SetOrder(_requests);
+
 			DialogBox box = spawn.GetComponent<DialogBox>();
-			box.SetWidth(70);
-			box.SetHeight(50);
+			box.SetWidth(50);
+			box.SetHeight(30);
 			box.CloseOnFocusTap = true;
 			box.TransitionIn();
 			box.SetOnTransitionComplete(OnDialogBoxClose);

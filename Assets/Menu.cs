@@ -19,6 +19,9 @@ public class Menu : MonoBehaviour
 		_button = GetComponent<Button>();
 		_button.SetTriggerCallback(OnClose);
 		_defaultStringFormat = DishTexts[0].text;
+
+		foreach(Text text in DishTexts)
+			text.text = "";
 	}
 
 	public void SetMenu(List<Food> dishes)

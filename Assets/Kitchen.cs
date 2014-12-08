@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Kitchen : MonoBehaviour
 {
@@ -46,7 +47,12 @@ public class Kitchen : MonoBehaviour
 
 	public IngredientsInventory GetInventory()
 	{
-		return new IngredientsInventory(_levelData.IngredientCollection);
+		IngredientCollections collection = _levelData.IngredientCollection;
+
+		if (Controller.Day > 4) //after 5 days the list is shuffled
+			collection.Shuffle();
+
+		return new IngredientsInventory(collection);
 	}
 
 	public void Cook(IngredientCollections ingredients)

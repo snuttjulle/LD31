@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoticeGraphics: {fileID: 9500000}
-  DialogBoxPrefab: {fileID: 100018, guid: 41c737e4c9f09244a90001cc0833d204, type: 2}
+  OrderBoxPrefab: {fileID: 11400000, guid: 9034fe4136f5c2e46b30e65c3845797d, type: 2}
   NoticeType: 0
 --- !u!212 &21200000
 SpriteRenderer:

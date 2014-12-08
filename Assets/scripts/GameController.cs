@@ -67,8 +67,8 @@ public class GameController : MonoBehaviour
 			Debug.Log("The day is over!");
 			_runDay = false;
 			_day++;
-			DayScreen.UpdateText();
 			DayScreen.gameObject.SetActive(true);
+			DayScreen.UpdateText();
 		}
 	}
 

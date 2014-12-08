@@ -22,6 +22,20 @@ public class IngredientCollections
 		}
 	}
 
+	public void Shuffle()
+	{
+		//_ingredientCollection = (List<Ingredient>)RandomUtils.Shuffle(IngredientCollection);
+		//_ingredientCollection = _ingredientCollection.OrderBy(item => RandomUtils.GetRandom.Next());
+
+		for (int i = 0; i < _ingredientCollection.Count; i++)
+		{
+			var temp = _ingredientCollection[i];
+			int randomIndex = Random.Range(i, _ingredientCollection.Count);
+			_ingredientCollection[i] = _ingredientCollection[randomIndex];
+			_ingredientCollection[randomIndex] = temp;
+		}
+	}
+
 	public IngredientCollections()
 	{
 		_ingredientCollection = new List<Ingredient>();

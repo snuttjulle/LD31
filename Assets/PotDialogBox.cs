@@ -99,10 +99,6 @@ public class PotDialogBox : MonoBehaviour
 
 	public void Hide()
 	{
-		//ResetButton.RemoveTriggerCallback();
-		//CookDialogBox.TransitionOut();
-		//Kitchen.ActivateButton();
-
 		CookDialogBox.TransitionOut();
 		IngredientsDialogBox.TransitionOut();
 		CookDialogBox.SetOnTransitionComplete((x) =>
@@ -114,10 +110,5 @@ public class PotDialogBox : MonoBehaviour
 	void CloseDialog(object sender)
 	{
 		Hide();
-		//CookDialogBox.TransitionOut();
-		//IngredientsDialogBox.TransitionOut();
-		//CookDialogBox.SetOnTransitionComplete((x) => {
-		//	Kitchen.ActivateButton();
-		//});
 	}
 }

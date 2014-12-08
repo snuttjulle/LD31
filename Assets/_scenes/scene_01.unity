@@ -2189,7 +2189,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 45}
-  m_SizeDelta: {x: 145.160004, y: 30}
+  m_SizeDelta: {x: 350, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &557770241
 Prefab:
@@ -2412,8 +2412,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -35, y: -31.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 64, y: -31.5}
+  m_SizeDelta: {x: 357.799988, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &618696789
 GameObject:
@@ -7749,8 +7749,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -35, y: -61}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 33, y: -61}
+  m_SizeDelta: {x: 296.600006, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1944132094
 GameObject:
