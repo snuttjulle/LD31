@@ -18,6 +18,11 @@ public class PotDialogBox : MonoBehaviour
 
 	void Start()
 	{
+		
+	}
+
+	public void InitPotDialog()
+	{
 		_inventory = Kitchen.GetInventory();
 		_inventory.SetDialogContentHandler(CookingContentHandler, PotTextPrefab);
 

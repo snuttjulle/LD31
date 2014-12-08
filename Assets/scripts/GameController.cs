@@ -25,17 +25,13 @@ public class GameController : MonoBehaviour
 	private float _timer = 0.0f;
 	private bool _runDay = false;
 
-	private uint _day;
+	private uint _day = 0;
 	public uint Day { get { return _day; } }
 
-	void Start()
+	void Awake()
 	{
 		Score = new Score();
 		_animationStateMachine = new AnimationStateMachine(this);
-		Level data = SetupLevel(0);
-		Menu menu = (Menu)UnityEngine.Object.Instantiate(MenuPrefab, new Vector3(0, 0, 0), new Quaternion());
-		menu.SetMenu(data.Dishes);
-		menu.SetPressCallback(OnMenuClose);
 	}
 
 	void Update()
@@ -68,6 +64,7 @@ public class GameController : MonoBehaviour
 			_runDay = false;
 			_day++;
 			DayScreen.gameObject.SetActive(true);
+			DayScreen.ScreenState = DayScreenState.End;
 			DayScreen.UpdateText();
 		}
 	}
@@ -147,9 +144,18 @@ public class GameController : MonoBehaviour
 
 	public void StartDay()
 	{
-		Debug.Log(String.Format("Day {0} has started!", _day));
-		_timer = 0.0f;
-		_runDay = true;
+		uint day = _day;
+		if (day > Kitchen.GetTotalLevels() - 1)
+			day = Kitchen.GetTotalLevels() - 1;
+
+		Level data = SetupLevel((int)day);
+		Menu menu = (Menu)UnityEngine.Object.Instantiate(MenuPrefab, new Vector3(0, 0, 0), new Quaternion());
+		menu.SetMenu(data.Dishes);
+		menu.SetPressCallback(OnMenuClose);
+
+		//Debug.Log(String.Format("Day {0} has started!", _day));
+		//_timer = 0.0f;
+		//_runDay = true;
 	}
 
 	public void Cook()
@@ -165,7 +171,7 @@ public class GameController : MonoBehaviour
 	public void GiveCritique(Table table, uint amount)
 	{
 		Score.Critiques += amount;
-		GameObject obj = (GameObject) UnityEngine.Object.Instantiate(AngryFacePrefab, table.transform.position, new Quaternion());
+		GameObject obj = (GameObject)UnityEngine.Object.Instantiate(AngryFacePrefab, table.transform.position, new Quaternion());
 		DayScreen.UpdateText();
 		Debug.Log("Critiques: " + Score.Critiques);
 	}
@@ -180,7 +186,10 @@ public class GameController : MonoBehaviour
 
 	public void OnMenuClose(object sender)
 	{
-		StartDay();
+		//StartDay();
 		Kitchen.ActivateButton();
+		Debug.Log(String.Format("Day {0} has started!", _day));
+		_timer = 0.0f;
+		_runDay = true;
 	}
 }

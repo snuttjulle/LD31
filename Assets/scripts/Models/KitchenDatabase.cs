@@ -61,4 +61,9 @@ public class KitchenDatabase : ScriptableObject
 	{
 		ScriptableObjectUtility.CreateAsset<KitchenDatabase>();
 	}
+
+	internal uint GetTotalLevels()
+	{
+		return (uint)Levels.Count;
+	}
 }

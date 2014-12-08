@@ -32,7 +32,13 @@ public class Kitchen : MonoBehaviour
 	public Level LoadLevelData(int level)
 	{
 		_levelData = Database.GetLevelData(level);
+		PotDialogBox.InitPotDialog();
 		return _levelData;
+	}
+
+	public uint GetTotalLevels()
+	{
+		return Database.GetTotalLevels();
 	}
 
 	public void ActivateButton()

@@ -11,6 +11,10 @@ public class DayScreen : MonoBehaviour
 	public Text MoneyText;
 	public Text CritiquesText;
 
+	public Text StartText;
+	public Text GameOverText;
+	public Text GameOverInfoText;
+
 	public DayScreenState ScreenState = DayScreenState.InSession;
 
 	private Button _tap;
@@ -28,6 +32,8 @@ public class DayScreen : MonoBehaviour
 		_dayText = DayText.text;
 		_moneyText = MoneyText.text;
 		_critiquesText = CritiquesText.text;
+
+		UpdateText();
 	}
 
 	private void OnTap(object sender)
@@ -44,5 +50,20 @@ public class DayScreen : MonoBehaviour
 		DayText.text = string.Format(_dayText, GameController.Day + 1);
 		MoneyText.text = string.Format(_moneyText, GameController.Score.Money);
 		CritiquesText.text = string.Format(_critiquesText, GameController.Score.Critiques);
+
+		if (ScreenState == DayScreenState.InSession)
+		{
+			StartText.gameObject.SetActive(true);
+
+			GameOverText.gameObject.SetActive(false);
+			GameOverInfoText.gameObject.SetActive(false);
+		}
+		else if (ScreenState == DayScreenState.End)
+		{
+			StartText.gameObject.SetActive(false);
+
+			GameOverText.gameObject.SetActive(true);
+			GameOverInfoText.gameObject.SetActive(true);
+		}
 	}
 }
