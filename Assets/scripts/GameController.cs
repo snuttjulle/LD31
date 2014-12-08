@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
 	public GameObject CoinPrefab;
 	public GameObject AngryFacePrefab;
 	public DayScreen DayScreen;
+	public Menu MenuPrefab;
 
 	public Score Score { get; private set; }
 
@@ -31,7 +32,10 @@ public class GameController : MonoBehaviour
 	{
 		Score = new Score();
 		_animationStateMachine = new AnimationStateMachine(this);
-		SetupLevel(0);
+		Level data = SetupLevel(0);
+		Menu menu = (Menu)UnityEngine.Object.Instantiate(MenuPrefab, new Vector3(0, 0, 0), new Quaternion());
+		menu.SetMenu(data.Dishes);
+		menu.SetPressCallback(OnMenuClose);
 	}
 
 	void Update()
@@ -68,7 +72,7 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	public void SetupLevel(int level)
+	public Level SetupLevel(int level)
 	{
 		_day = (uint)level;
 		DayScreen.UpdateText();
@@ -125,6 +129,8 @@ public class GameController : MonoBehaviour
 			if (timestamp > _dayLength)
 				_dayLength = timestamp + 3; //delay of 3 seconds
 		}
+
+		return data;
 	}
 
 	public void StartProgressBar(float time, Vector3 position, Action<object> callback)
@@ -170,5 +176,11 @@ public class GameController : MonoBehaviour
 		UnityEngine.Object.Instantiate(CoinPrefab, table.transform.position, new Quaternion());
 		DayScreen.UpdateText();
 		Debug.Log("Money: " + Score.Money);
+	}
+
+	public void OnMenuClose(object sender)
+	{
+		StartDay();
+		Kitchen.ActivateButton();
 	}
 }

@@ -18,7 +18,6 @@ public class Kitchen : MonoBehaviour
 	void Start()
 	{
 		_button = GetComponent<Button>();
-		ActivateButton();
 	}
 
 	private void OnPress(object sender)
@@ -38,6 +37,11 @@ public class Kitchen : MonoBehaviour
 	public void ActivateButton()
 	{
 		_button.SetTriggerCallback(OnPress);
+	}
+
+	public void DeactivateButton()
+	{
+		_button.RemoveTriggerCallback();
 	}
 
 	public IngredientsInventory GetInventory()

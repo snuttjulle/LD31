@@ -38,6 +38,9 @@ public class DayScreen : MonoBehaviour
 
 	public void UpdateText()
 	{
+		if (_dayText == null)
+			return;
+
 		DayText.text = string.Format(_dayText, GameController.Day + 1);
 		MoneyText.text = string.Format(_moneyText, GameController.Score.Money);
 		CritiquesText.text = string.Format(_critiquesText, GameController.Score.Critiques);
