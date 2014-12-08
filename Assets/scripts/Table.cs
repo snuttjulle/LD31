@@ -29,6 +29,8 @@ public class Table : MonoBehaviour
 
 	private TableTimeline _timeline;
 
+	private GameController _controller;
+
 	private bool FoodFullyDelivered
 	{
 		get
@@ -48,6 +50,7 @@ public class Table : MonoBehaviour
 
 	void Awake()
 	{
+		_controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		_deliveredFood = new List<bool>();
 		_timeline = GetComponent<TableTimeline>();
 		_timeline.SetEventTriggerCallback(OnTableEventTrigger);
@@ -79,6 +82,7 @@ public class Table : MonoBehaviour
 					if (_activeNoticeHandler.NoticeType == NoticeType.OrderFood)
 					{
 						Debug.Log("Table hasn't gotten to order yet");
+						_controller.GiveCritique(this, 1);
 						//1- point
 					}
 				}
@@ -87,6 +91,7 @@ public class Table : MonoBehaviour
 				if (!FoodFullyDelivered)
 				{
 					Debug.Log("Table hasn't gotten any food");
+					_controller.GiveCritique(this, 1);
 					//-1 point
 				}
 				break;
@@ -107,6 +112,7 @@ public class Table : MonoBehaviour
 				if (!_hasPayed)
 				{
 					Debug.Log("Table has not gotten to pay yet");
+					_controller.GiveCritique(this, 1);
 					//-1 point
 				}
 				break;
@@ -147,8 +153,18 @@ public class Table : MonoBehaviour
 		{
 			_hasPayed = true;
 			_activeNoticeHandler.ForceClose();
+
+			int receivedFood = 0;
+			foreach (bool delivered in _deliveredFood)
+			{
+				if (delivered)
+					receivedFood++;
+			}
+
+			_controller.Pay(this, (uint)(receivedFood * 200)); //TODO: get price depending on food?
 			//TODO: sound play here
-			//TODO: add moneys here
+
+			Leave();
 		}
 	}
 

@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour
 	public ProgressBar ProgressBarPrefab;
 	public List<Table> Tables;
 	public Kitchen Kitchen;
+	public GameObject CoinPrefab;
+	public GameObject AngryFacePrefab;
+
+	public Score Score { get; private set; }
 
 	AnimationStateMachine _animationStateMachine;
 	private float _dayLength = 0.0f;
@@ -23,6 +27,7 @@ public class GameController : MonoBehaviour
 
 	void Start()
 	{
+		Score = new Score();
 		_day = 0;
 		_animationStateMachine = new AnimationStateMachine(this);
 		SetupLevel((int)_day);
@@ -140,5 +145,19 @@ public class GameController : MonoBehaviour
 	public void UnCook()
 	{
 		_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
+	}
+
+	public void GiveCritique(Table table, uint amount)
+	{
+		Score.Critiques += amount;
+		GameObject obj = (GameObject) UnityEngine.Object.Instantiate(AngryFacePrefab, table.transform.position, new Quaternion());
+		Debug.Log("Critiques: " + Score.Critiques);
+	}
+
+	public void Pay(Table table, uint amount)
+	{
+		Score.Money += amount;
+		UnityEngine.Object.Instantiate(CoinPrefab, table.transform.position, new Quaternion());
+		Debug.Log("Money: " + Score.Money);
 	}
 }

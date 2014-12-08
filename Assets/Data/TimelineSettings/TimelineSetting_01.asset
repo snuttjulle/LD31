@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c885baa1881425409eeb988f92b5159, type: 3}
   m_Name: TimelineSetting_01
   m_EditorClassIdentifier: 
-  MinNothingTime: 10
+  MinNothingTime: 0
   MaxNothingTime: 10
   MinOrderTime: 10
   MaxOrderTime: 10

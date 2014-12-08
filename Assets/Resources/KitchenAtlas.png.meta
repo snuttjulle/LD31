@@ -52,6 +52,8 @@ TextureImporter:
     21300094: progress_bar
     21300096: progress_bar_time
     21300098: trash
+    21300100: coin
+    21300102: angry_face
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -590,6 +592,26 @@ TextureImporter:
         y: 166
         width: 20
         height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: coin
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 169
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: angry_face
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 169
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
