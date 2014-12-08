@@ -23,16 +23,13 @@ public class DishDelivery : MonoBehaviour
 		_dish = dish;
 
 		_activeInstructions = (DialogBox)Object.Instantiate(DragInstructionsPrefab, new Vector3(70, -60, 0), new Quaternion());
-		//instructions.gameObject.transform.parent = InstructionsHolder.transform;
-
 		_activeInstructions.TransitionIn();
 
 		_box.TransitionIn();
 	}
 
-	public void DeliverFood(Table table)
+	public void Close()
 	{
-		table.DeliverDish(_dish);
 		_activeInstructions.TransitionOut();
 		_box.TransitionOut();
 
@@ -47,5 +44,11 @@ public class DishDelivery : MonoBehaviour
 		_box = null;
 		_activeInstructions = null;
 		GameObject.FindGameObjectWithTag("Kitchen").GetComponent<Kitchen>().ActivateButton();
+	}
+
+	public void DeliverFood(Table table)
+	{
+		table.DeliverDish(_dish);
+		Close();
 	}
 }

@@ -37,13 +37,20 @@ public class NoticeHandler : MonoBehaviour
 			_onPressCallback = null;
 		}
 
-		GameObject spawn = (GameObject)Instantiate(DialogBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
-		DialogBox box = spawn.GetComponent<DialogBox>();
-		box.SetWidth(70);
-		box.SetHeight(10);
-		box.CloseOnFocusTap = true;
-		box.TransitionIn();
-		box.SetOnTransitionComplete(OnDialogBoxClose);
+		if (NoticeType == NoticeType.OrderFood)
+		{
+			GameObject spawn = (GameObject)Instantiate(DialogBoxPrefab, new Vector3(0, 0, 0), new Quaternion());
+			DialogBox box = spawn.GetComponent<DialogBox>();
+			box.SetWidth(70);
+			box.SetHeight(10);
+			box.CloseOnFocusTap = true;
+			box.TransitionIn();
+			box.SetOnTransitionComplete(OnDialogBoxClose);
+		}
+		else if (NoticeType == NoticeType.Pay)
+		{
+			//PAY!
+		}
 	}
 
 	void OnDialogBoxClose(object sender)

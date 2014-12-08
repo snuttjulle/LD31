@@ -15,11 +15,17 @@ public class GameController : MonoBehaviour
 	public Kitchen Kitchen;
 
 	AnimationStateMachine _animationStateMachine;
+	private float _dayLength = 0.0f;
+	private float _timer = 0.0f;
+	private bool _runDay = false;
+
+	private uint _day;
 
 	void Start()
 	{
+		_day = 0;
 		_animationStateMachine = new AnimationStateMachine(this);
-		SetupLevel(0);
+		SetupLevel((int)_day);
 	}
 
 	void Update()
@@ -34,11 +40,26 @@ public class GameController : MonoBehaviour
 			OverlayHandler.Hide();
 		else if (Input.GetKeyUp(KeyCode.T))
 			Chef.GiveThumbsUp();
+		else if (Input.GetKeyUp(KeyCode.H))
+			StartDay();
+
+
+		if (!_runDay)
+			return;
+
+		_timer += Time.deltaTime;
+
+		foreach (Table table in Tables)
+			table.UpdateTime(_timer);
+
+		if (_timer > _dayLength)
+			Debug.Log("The day is over!");
 	}
 
 	public void SetupLevel(int level)
 	{
 		Level data = Kitchen.LoadLevelData(level);
+		_dayLength = 0; //reset day
 
 		//disable hitboxes for tables
 		foreach (Table table in Tables)
@@ -51,7 +72,7 @@ public class GameController : MonoBehaviour
 		{
 			//Tables[i].GetComponent<BoxCollider2D>().enabled = true;
 			Tables[i].Requests = new FoodRequest(data.ActiveTables[i], data.Dishes);
-			
+
 			//setup timeline
 			Queue<TableEvent> events = new Queue<TableEvent>();
 
@@ -64,7 +85,7 @@ public class GameController : MonoBehaviour
 			events.Enqueue(new TableEvent(timestamp, TableEventType.Order));
 
 			//order
-			moment= RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTime, data.TimelineSettings.MaxOrderTime);
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTime, data.TimelineSettings.MaxOrderTime);
 			timestamp += moment;
 			events.Enqueue(new TableEvent(timestamp, TableEventType.HasOrderedYet));
 
@@ -86,6 +107,9 @@ public class GameController : MonoBehaviour
 			//leave
 
 			Tables[i].InitTable(new FoodRequest(data.ActiveTables[i], data.Dishes), events);
+
+			if (timestamp > _dayLength)
+				_dayLength = timestamp + 3; //delay of 3 seconds
 		}
 	}
 
@@ -99,6 +123,13 @@ public class GameController : MonoBehaviour
 		progressBar.ProgressTime = time;
 		progressBar.SetCallback(callback);
 		progressBar.Start();
+	}
+
+	public void StartDay()
+	{
+		Debug.Log(String.Format("Day {0} has started!", _day));
+		_timer = 0.0f;
+		_runDay = true;
 	}
 
 	public void Cook()

@@ -21,7 +21,39 @@ public class KitchenDatabase : ScriptableObject
 
 	public Food GetDish(IngredientCollections ingredients)
 	{
-		return Dishes[0];
+		if(ingredients.IngredientCollection.Count <= 0)
+			return null;
+
+		foreach (Food food in Dishes)
+		{
+			int numIng = food.Ingredients.Count;
+			if (numIng != ingredients.IngredientCollection.Count)
+				continue;
+
+			if (food.HasIngredient(ingredients.IngredientCollection[0]))
+			{
+				bool contains = true;
+
+				foreach (Ingredient ing in ingredients.IngredientCollection)
+				{
+					contains = food.HasIngredient(ing);
+
+					if (!contains)
+						break;
+				}
+
+				if (contains)
+					return food;
+			}
+		}
+
+		foreach (Food food in Dishes)
+		{
+			if (food.Name == "Junk")
+				return food;
+		}
+		
+		return null;
 	}
 
 	[MenuItem("Assets/Create/KitchenDatabase")]

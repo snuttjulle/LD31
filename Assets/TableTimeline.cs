@@ -14,9 +14,10 @@ public class TableTimeline : MonoBehaviour
 
 	void Awake()
 	{
+		TableEvents = new Queue<TableEvent>();
 	}
 
-	void Update()
+	public void UpdateTime(float time)
 	{
 		if (TableEvents.Count <= 0)
 			return;
@@ -24,7 +25,7 @@ public class TableTimeline : MonoBehaviour
 		if (!_eventTriggerTime.HasValue)
 			_eventTriggerTime = TableEvents.Peek().Time;
 
-		_timer += Time.deltaTime;
+		_timer = time;
 
 		if (_timer > _eventTriggerTime.Value)
 		{

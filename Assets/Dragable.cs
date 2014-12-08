@@ -16,7 +16,7 @@ public class Dragable : MonoBehaviour //TODO: TYPO!!!
 	void Awake()
 	{
 		_startPosition = transform.position;
-		_startPosition.z = -30;
+		_startPosition.z = -40;
 		_dropPosition = _startPosition;
 	}
 
@@ -62,7 +62,16 @@ public class Dragable : MonoBehaviour //TODO: TYPO!!!
 			{
 				Table table = hit.transform.gameObject.GetComponent<Table>();
 				transform.parent.GetComponent<DishDelivery>().DeliverFood(table);
+				transform.parent = null; //TODO: replace with animation
+				Object.Destroy(gameObject);
 				_pressing = true; //don't move the thing
+			}
+			else if (hit.transform.tag == "Trash")
+			{
+				transform.parent.gameObject.GetComponent<DishDelivery>().Close();
+				transform.parent = null; //TODO: replace with animation
+				Object.Destroy(gameObject);
+				_pressing = true;
 			}
 		}
 	}

@@ -1,6 +1,57 @@
 fileFormatVersion: 2
 guid: d1e85951a489b54429cbf780a209b368
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: KitchenAtlas_0
+    21300002: KitchenAtlas_1
+    21300004: KitchenAtlas_2
+    21300006: KitchenAtlas_3
+    21300008: KitchenAtlas_4
+    21300010: KitchenAtlas_5
+    21300012: KitchenAtlas_6
+    21300014: KitchenAtlas_7
+    21300016: KitchenAtlas_8
+    21300018: KitchenAtlas_9
+    21300020: KitchenAtlas_10
+    21300022: KitchenAtlas_11
+    21300024: KitchenAtlas_12
+    21300026: KitchenAtlas_13
+    21300028: KitchenAtlas_14
+    21300030: KitchenAtlas_15
+    21300032: KitchenAtlas_17
+    21300034: KitchenAtlas_18
+    21300036: KitchenAtlas_19
+    21300038: KitchenAtlas_20
+    21300040: KitchenAtlas_22
+    21300042: KitchenAtlas_24
+    21300044: KitchenAtlas_25
+    21300046: KitchenAtlas_26
+    21300048: KitchenAtlas_28
+    21300050: KitchenAtlas_29
+    21300052: KitchenAtlas_30
+    21300054: KitchenAtlas_30
+    21300056: KitchenAtlas_28
+    21300058: box_arrow
+    21300060: box_tl
+    21300062: box_tm
+    21300064: box_tr
+    21300066: box_ml
+    21300068: box_bl
+    21300070: box_bm
+    21300072: box_br
+    21300074: box_mr
+    21300076: box_mm
+    21300078: black_square
+    21300080: button_cook
+    21300082: button_cancel
+    21300084: KitchenAtlas_42
+    21300086: button_plus
+    21300088: button_minus
+    21300090: button_plus_small
+    21300092: button_minus_small
+    21300094: progress_bar
+    21300096: progress_bar_time
+    21300098: trash
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -531,6 +582,16 @@ TextureImporter:
         height: 4
       alignment: 1
       pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: trash
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 166
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

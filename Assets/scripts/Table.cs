@@ -27,6 +27,8 @@ public class Table : MonoBehaviour
 
 	private int _incorrectDelivery;
 
+	private TableTimeline _timeline;
+
 	private bool FoodFullyDelivered
 	{
 		get
@@ -47,15 +49,20 @@ public class Table : MonoBehaviour
 	void Awake()
 	{
 		_deliveredFood = new List<bool>();
-		GetComponent<TableTimeline>().SetEventTriggerCallback(OnTableEventTrigger);
+		_timeline = GetComponent<TableTimeline>();
+		_timeline.SetEventTriggerCallback(OnTableEventTrigger);
 	}
 
 	public void InitTable(FoodRequest request, Queue<TableEvent> events)
 	{
 		SetupFoodRequests(request);
-		TableTimeline timeline = GetComponent<TableTimeline>();
-		timeline.TableEvents = events;
-		timeline.Reset();
+		_timeline.TableEvents = events;
+		_timeline.Reset();
+	}
+
+	public void UpdateTime(float time)
+	{
+		_timeline.UpdateTime(time);
 	}
 
 	private void OnTableEventTrigger(TableEventType type)
@@ -106,8 +113,8 @@ public class Table : MonoBehaviour
 
 			case TableEventType.Leave:
 				if (!_hasPayed)
-					Debug.Log("Didn't paying");
-					Leave();
+					Debug.Log("Didn't pay");
+				Leave();
 				break;
 		}
 	}
@@ -132,7 +139,17 @@ public class Table : MonoBehaviour
 
 	private void OnNoticePress(object sender)
 	{
-		GetComponent<BoxCollider2D>().enabled = true;
+		NoticeHandler handler = (NoticeHandler)sender;
+
+		if (handler.NoticeType == NoticeType.OrderFood)
+			GetComponent<BoxCollider2D>().enabled = true;
+		else if (handler.NoticeType == NoticeType.Pay)
+		{
+			_hasPayed = true;
+			_activeNoticeHandler.ForceClose();
+			//TODO: sound play here
+			//TODO: add moneys here
+		}
 	}
 
 	public void AlertOfRequest(NoticeType type)
@@ -146,8 +163,7 @@ public class Table : MonoBehaviour
 		notice.SetupRequestData(Requests);
 		notice.NoticeType = type;
 
-		if (type == NoticeType.OrderFood)
-			notice.SetOnNoticePressCallback(OnNoticePress);
+		notice.SetOnNoticePressCallback(OnNoticePress);
 
 		_activeNoticeHandler = notice;
 	}

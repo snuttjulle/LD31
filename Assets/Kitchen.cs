@@ -48,6 +48,7 @@ public class Kitchen : MonoBehaviour
 	public void Cook(IngredientCollections ingredients)
 	{
 		_result = Database.GetDish(ingredients);
+		Debug.Log("Cooked " + _result.Name);
 		Controller.Cook();
 		Controller.StartProgressBar(1, new Vector3(103, -10, -15), OnCookingComplete); //TODO: get time from dish
 		_isCooking = true;

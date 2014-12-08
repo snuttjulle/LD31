@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: Database
   m_EditorClassIdentifier: 
   Dishes:
+  - {fileID: 11400000, guid: fb687959cf6ae5045939f021aafcb715, type: 2}
+  - {fileID: 11400000, guid: d04f516d1acbc4f4c8489d840bdf3882, type: 2}
   - {fileID: 11400000, guid: 0b2b70ee101d9a242ab1c4361d1ef1c1, type: 2}
   Levels:
   - {fileID: 11400000, guid: 9f3c10ca294d28d4fb228a3526eeec1a, type: 2}
