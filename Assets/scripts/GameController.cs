@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
 	private float _dayLength = 0.0f;
 	private float _timer = 0.0f;
 	private bool _runDay = false;
+	private int _critiqueLimit = 0;
+	private int _critiquesGottenToday;
 
 	private uint _day = 0;
 	public uint Day { get { return _day; } }
@@ -49,9 +51,20 @@ public class GameController : MonoBehaviour
 		else if (Input.GetKeyUp(KeyCode.H))
 			StartDay();
 
-
 		if (!_runDay)
 			return;
+
+		if (_critiquesGottenToday > _critiqueLimit)
+		{
+			Debug.Log("Game over!");
+			_runDay = false;
+			DayScreen.gameObject.SetActive(true);
+			DayScreen.ScreenState = DayScreenState.End;
+			DayScreen.UpdateText();
+			_day = 0;
+			Score = new Score();
+			_timer = 0;
+		}
 
 		_timer += Time.deltaTime;
 
@@ -64,7 +77,7 @@ public class GameController : MonoBehaviour
 			_runDay = false;
 			_day++;
 			DayScreen.gameObject.SetActive(true);
-			DayScreen.ScreenState = DayScreenState.End;
+			DayScreen.ScreenState = DayScreenState.InSession;
 			DayScreen.UpdateText();
 		}
 	}
@@ -74,6 +87,8 @@ public class GameController : MonoBehaviour
 		_day = (uint)level;
 		DayScreen.UpdateText();
 		Level data = Kitchen.LoadLevelData(level);
+		_critiqueLimit = data.CritiqueLimit;
+		_critiquesGottenToday = 0;
 		_dayLength = 0; //reset day
 
 		//disable hitboxes for tables
@@ -173,6 +188,7 @@ public class GameController : MonoBehaviour
 		Score.Critiques += amount;
 		GameObject obj = (GameObject)UnityEngine.Object.Instantiate(AngryFacePrefab, table.transform.position, new Quaternion());
 		DayScreen.UpdateText();
+		_critiquesGottenToday++;
 		Debug.Log("Critiques: " + Score.Critiques);
 	}
 

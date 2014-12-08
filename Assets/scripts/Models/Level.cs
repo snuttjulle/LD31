@@ -8,6 +8,7 @@ public class Level : ScriptableObject
 	public List<Food> Dishes;
 	public List<int> ActiveTables; //list.count = amount of tables active, int is max number of people at each table
 	public TimelineEvent TimelineSettings;
+	public int CritiqueLimit;
 
 	public IngredientCollections IngredientCollection
 	{

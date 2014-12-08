@@ -15,6 +15,8 @@ public class DayScreen : MonoBehaviour
 	public Text GameOverText;
 	public Text GameOverInfoText;
 
+	public MenuScreen MenuScreen;
+
 	public DayScreenState ScreenState = DayScreenState.InSession;
 
 	private Button _tap;
@@ -38,8 +40,18 @@ public class DayScreen : MonoBehaviour
 
 	private void OnTap(object sender)
 	{
-		gameObject.SetActive(false);
-		GameController.StartDay();
+		if (ScreenState == DayScreenState.InSession)
+		{
+			gameObject.SetActive(false);
+			GameController.StartDay();
+		}
+		else if (ScreenState == DayScreenState.End)
+		{
+			MenuScreen.gameObject.SetActive(true);
+			MenuScreen.ActivateButtons();
+			gameObject.SetActive(false);
+		}
+		
 	}
 
 	public void UpdateText()

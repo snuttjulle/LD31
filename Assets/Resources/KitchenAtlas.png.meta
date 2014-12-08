@@ -54,6 +54,8 @@ TextureImporter:
     21300098: trash
     21300100: coin
     21300102: angry_face
+    21300104: white_box
+    21300106: title
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -612,6 +614,26 @@ TextureImporter:
         y: 169
         width: 14
         height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: white_box
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 68
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: title
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 7
+        width: 112
+        height: 48
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

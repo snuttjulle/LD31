@@ -45,5 +45,6 @@ public class TableTimeline : MonoBehaviour
 	public void Reset()
 	{
 		_timer = 0.0f;
+		_eventTriggerTime = null;
 	}
 }

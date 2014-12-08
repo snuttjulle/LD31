@@ -217,6 +217,7 @@ public class Table : MonoBehaviour
 			}
 		}
 
+		_controller.GiveCritique(this, 1);
 		Debug.Log("Delivered the wrong food");
 		_incorrectDelivery++;
 	}
