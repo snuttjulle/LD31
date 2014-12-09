@@ -17,7 +17,7 @@ PlayerSettings:
   defaultScreenWidth: 1080
   defaultScreenHeight: 635
   defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenHeightWeb: 564
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   m_ActiveColorSpace: 0
