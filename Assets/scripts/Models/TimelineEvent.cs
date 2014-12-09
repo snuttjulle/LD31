@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class TimelineEvent : ScriptableObject
 {
@@ -19,9 +21,11 @@ public class TimelineEvent : ScriptableObject
 	public int MinWaitToLeaveTime;
 	public int MaxWaitToLeaveTime;
 
+#if UNITY_EDITOR
 	[MenuItem("Assets/Create/TimelineSettings")]
 	public static void CreateAsset()
 	{
 		ScriptableObjectUtility.CreateAsset<TimelineEvent>();
 	}
+#endif
 }

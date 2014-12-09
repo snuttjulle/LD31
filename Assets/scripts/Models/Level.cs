@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections.Generic;
 
 public class Level : ScriptableObject
@@ -18,9 +20,11 @@ public class Level : ScriptableObject
 		}
 	}
 
+#if UNITY_EDITOR
 	[MenuItem("Assets/Create/Level")]
 	public static void CreateAsset()
 	{
 		ScriptableObjectUtility.CreateAsset<Level>();
 	}
+#endif
 }

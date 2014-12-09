@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class Ingredient : ScriptableObject
 {
@@ -18,9 +20,11 @@ public class Ingredient : ScriptableObject
 		return false;
 	}
 
+#if UNITY_EDITOR
 	[MenuItem("Assets/Create/Ingredient")]
 	public static void CreateAsset()
 	{
 		ScriptableObjectUtility.CreateAsset<Ingredient>();
 	}
+#endif
 }

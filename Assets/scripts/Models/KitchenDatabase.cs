@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections.Generic;
 using System;
 
@@ -21,7 +23,7 @@ public class KitchenDatabase : ScriptableObject
 
 	public Food GetDish(IngredientCollections ingredients)
 	{
-		if(ingredients.IngredientCollection.Count <= 0)
+		if (ingredients.IngredientCollection.Count <= 0)
 			return null;
 
 		foreach (Food food in Dishes)
@@ -52,15 +54,17 @@ public class KitchenDatabase : ScriptableObject
 			if (food.Name == "Junk")
 				return food;
 		}
-		
+
 		return null;
 	}
 
+#if UNITY_EDITOR
 	[MenuItem("Assets/Create/KitchenDatabase")]
 	public static void CreateAsset()
 	{
 		ScriptableObjectUtility.CreateAsset<KitchenDatabase>();
 	}
+#endif
 
 	internal uint GetTotalLevels()
 	{

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinNothingTime: 0
   MaxNothingTime: 10
-  MinOrderTime: 10
-  MaxOrderTime: 10
-  MinOrderTimeDelay: 10
-  MaxOrderTimeDelay: 10
-  MinPrepareFoodTime: 10
-  MaxPrepareFoodTime: 10
-  MinWaitToLeaveTime: 10
-  MaxWaitToLeaveTime: 10
+  MinOrderTime: 3
+  MaxOrderTime: 16
+  MinOrderTimeDelay: 6
+  MaxOrderTimeDelay: 20
+  MinPrepareFoodTime: 6
+  MaxPrepareFoodTime: 20
+  MinWaitToLeaveTime: 4
+  MaxWaitToLeaveTime: 27

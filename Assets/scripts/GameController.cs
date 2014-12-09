@@ -33,6 +33,11 @@ public class GameController : MonoBehaviour
 	private uint _day = 0;
 	public uint Day { get { return _day; } }
 
+	void Start()
+	{
+		Screen.fullScreen = false;
+	}
+
 	void Awake()
 	{
 		Score = new Score();
@@ -42,18 +47,18 @@ public class GameController : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyUp(KeyCode.W))
-			_animationStateMachine.SetAnimationState(AnimationStates.Cooking);
-		else if (Input.GetKeyUp(KeyCode.Q))
-			_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
-		else if (Input.GetKeyUp(KeyCode.D))
-			OverlayHandler.Show();
-		else if (Input.GetKeyUp(KeyCode.F))
-			OverlayHandler.Hide();
-		else if (Input.GetKeyUp(KeyCode.T))
-			Chef.GiveThumbsUp();
-		else if (Input.GetKeyUp(KeyCode.H))
-			StartDay();
+		//if (Input.GetKeyUp(KeyCode.W))
+		//	_animationStateMachine.SetAnimationState(AnimationStates.Cooking);
+		//else if (Input.GetKeyUp(KeyCode.Q))
+		//	_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
+		//else if (Input.GetKeyUp(KeyCode.D))
+		//	OverlayHandler.Show();
+		//else if (Input.GetKeyUp(KeyCode.F))
+		//	OverlayHandler.Hide();
+		//else if (Input.GetKeyUp(KeyCode.T))
+		//	Chef.GiveThumbsUp();
+		//else if (Input.GetKeyUp(KeyCode.H))
+		//	StartDay();
 
 		if (!_runDay)
 			return;
