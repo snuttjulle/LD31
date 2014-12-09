@@ -44,6 +44,10 @@ public class PotDialogBox : MonoBehaviour
 
 		float listPosY = 33;
 		float listPosX = -53;
+
+		foreach (Transform child in IngredientsContentHandler.transform)
+			Object.Destroy(child.gameObject);
+
 		foreach (Ingredient ing in _inventory.Collection.IngredientCollection)
 		{
 			Debug.Log(ing.Name);
@@ -93,6 +97,7 @@ public class PotDialogBox : MonoBehaviour
 			IngredientsDialogBox.TransitionOut();
 			Kitchen.Cook(_inventory.IngredientsInPot);
 			_inventory.NewPot();
+			IsOpen = false;
 		}
 		else
 		{

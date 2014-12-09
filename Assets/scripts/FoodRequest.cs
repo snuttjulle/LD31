@@ -12,7 +12,7 @@ public class FoodRequest
 		RequestedFood = new List<Food>();
 		for (int i = 0; i < numberOfRequests; i++)
 		{
-			int dish = RandomUtils.GetRandom.Next(0, allDishes.Count - 1);
+			int dish = RandomUtils.GetRandom.Next(0, allDishes.Count);
 			RequestedFood.Add(allDishes[dish]);			
 		}
 	}

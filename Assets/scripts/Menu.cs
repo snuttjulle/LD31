@@ -39,7 +39,7 @@ public class Menu : MonoBehaviour
 				bool unique = false;
 				while (!unique)
 				{
-					int rnd = RandomUtils.GetRandom.Next(0, dishes.Count - 1);
+					int rnd = RandomUtils.GetRandom.Next(0, dishes.Count);
 					if(!_dishSelection.Contains(dishes[rnd]) || _dishSelection.Count >= 4)
 					{
 						_dishSelection.Add(dishes[rnd]);

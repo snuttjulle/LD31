@@ -5,8 +5,8 @@ using System;
 
 public class RandomUtils : MonoBehaviour
 {
-	private static System.Random _rnd = new System.Random();
-	public static System.Random GetRandom { get { return _rnd; } }
+	private static System.Random _rnd = null;
+	public static System.Random GetRandom { get { if (_rnd == null) _rnd = new System.Random(); return _rnd; } }
 
 	public static IList Shuffle(IList list)
 	{

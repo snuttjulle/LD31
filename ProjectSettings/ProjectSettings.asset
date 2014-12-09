@@ -14,8 +14,8 @@ PlayerSettings:
   productName: LD31
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  defaultScreenWidth: 1024
-  defaultScreenHeight: 720
+  defaultScreenWidth: 1080
+  defaultScreenHeight: 635
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_RenderingPath: 1
@@ -54,7 +54,7 @@ PlayerSettings:
   xboxEnableKinectAutoTracking: 0
   xboxEnableFitness: 0
   visibleInBackground: 0
-  macFullscreenMode: 2
+  macFullscreenMode: 1
   d3d9FullscreenMode: 1
   d3d11ForceExclusiveMode: 0
   xboxSpeechDB: 0

@@ -145,6 +145,7 @@ public class DialogBox : MonoBehaviour
 
 		float factor = width / (float)default_size;
 		float scaleFactor = (width / (default_size / 2)) - 1;
+		scaleFactor += 0.5f; //stupid fix to avoid seeing through the box in transitions
 
 		for (int i = 0; i < TopRow.Length; i++)
 			TopRow[i].transform.localPosition = new Vector3(_defaultSizes[0, i].x * factor, TopRow[i].transform.localPosition.y, TopRow[i].transform.localPosition.z);
@@ -172,7 +173,7 @@ public class DialogBox : MonoBehaviour
 
 		float factor = height / (float)default_size;
 		float scaleFactor = (height / (default_size / 2)) - 1;
-		scaleFactor += 0.2f; //stupid fix to avoid seeing through the box in transitions
+		scaleFactor += 0.5f; //stupid fix to avoid seeing through the box in transitions
 
 		for (int i = 0; i < TopRow.Length; i++)
 			TopRow[i].transform.localPosition = new Vector3(TopRow[i].transform.localPosition.x, _defaultSizes[0, i].y * factor, TopRow[i].transform.localPosition.z);

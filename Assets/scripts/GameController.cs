@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
 	private uint _day = 0;
 	public uint Day { get { return _day; } }
 
+	private float _nextDayTimer = 0.0f;
+
 	void Start()
 	{
 		Screen.fullScreen = false;
@@ -88,7 +90,10 @@ public class GameController : MonoBehaviour
 				tablesLeft++;
 		}
 
-		if (_timer > _dayLength || tablesLeft >= _activeTables)
+		if (tablesLeft >= _activeTables)
+			_nextDayTimer += Time.deltaTime;
+
+		if (_timer > _dayLength || _nextDayTimer > 3.0f)
 		{
 			Debug.Log("The day is over!");
 			_runDay = false;
@@ -108,6 +113,7 @@ public class GameController : MonoBehaviour
 		_critiqueLimit = data.CritiqueLimit;
 		_critiquesGottenToday = 0;
 		_dayLength = 0; //reset day
+		_nextDayTimer = 0.0f;
 
 		//disable hitboxes for tables
 		foreach (Table table in Tables)
@@ -128,27 +134,27 @@ public class GameController : MonoBehaviour
 			int moment;
 
 			//nothing
-			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinNothingTime, data.TimelineSettings.MaxNothingTime);
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinNothingTime, data.TimelineSettings.MaxNothingTime + 1);
 			timestamp += moment;
 			events.Enqueue(new TableEvent(timestamp, TableEventType.Order));
 
 			//order
-			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTime, data.TimelineSettings.MaxOrderTime);
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTime, data.TimelineSettings.MaxOrderTime + 1);
 			timestamp += moment;
 			events.Enqueue(new TableEvent(timestamp, TableEventType.HasOrderedYet));
 
 			//order delay
-			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTimeDelay, data.TimelineSettings.MinOrderTimeDelay);
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinOrderTimeDelay, data.TimelineSettings.MinOrderTimeDelay + 1);
 			timestamp += moment;
 			events.Enqueue(new TableEvent(timestamp, TableEventType.HasFoodYet));
 
 			//food
-			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinPrepareFoodTime, data.TimelineSettings.MaxPrepareFoodTime);
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinPrepareFoodTime, data.TimelineSettings.MaxPrepareFoodTime + 1);
 			timestamp += moment;
 			events.Enqueue(new TableEvent(timestamp, TableEventType.Pay));
 
 			//pay
-			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinWaitToLeaveTime, data.TimelineSettings.MaxWaitToLeaveTime);
+			moment = RandomUtils.GetRandom.Next(data.TimelineSettings.MinWaitToLeaveTime, data.TimelineSettings.MaxWaitToLeaveTime + 1);
 			timestamp += moment;
 			events.Enqueue(new TableEvent(timestamp, TableEventType.Leave));
 
