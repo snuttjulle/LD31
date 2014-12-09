@@ -11,6 +11,7 @@ public class MenuScreen : MonoBehaviour
 	public Text HowText;
 	public Button RulesDialogBox;
 	public Text RulesText;
+	public AudioSource ClickSound;
 
 	void Awake()
 	{
@@ -29,6 +30,7 @@ public class MenuScreen : MonoBehaviour
 		DayScreen.ScreenState = DayScreenState.InSession;
 		DayScreen.UpdateText();
 		DayScreen.gameObject.SetActive(true);
+		ClickSound.Play();
 	}
 
 	private void OnHowPress(object sender)
@@ -39,6 +41,7 @@ public class MenuScreen : MonoBehaviour
 		RulesText.gameObject.SetActive(true);
 		RulesDialogBox.gameObject.SetActive(true);
 		RulesDialogBox.SetTriggerCallback(OnHowClose);
+		ClickSound.Play();
 	}
 
 	private void OnHowClose(object sender)
@@ -51,5 +54,6 @@ public class MenuScreen : MonoBehaviour
 
 		Play.SetTriggerCallback(OnPlayPress);
 		How.SetTriggerCallback(OnHowPress);
+		ClickSound.Play();
 	}
 }

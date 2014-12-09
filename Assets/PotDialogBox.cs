@@ -15,10 +15,16 @@ public class PotDialogBox : MonoBehaviour
 	public GameObject PotTextPrefab;
 
 	private IngredientsInventory _inventory;
+	private AudioSource _audioSource;
 
 	void Start()
 	{
 		
+	}
+
+	void Awake()
+	{
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	public void InitPotDialog()
@@ -78,6 +84,7 @@ public class PotDialogBox : MonoBehaviour
 	{
 		if (_inventory.NumIngredientsInPot > 0)
 		{
+			_audioSource.Play();
 			Debug.Log("Let's cook!");
 			CookDialogBox.TransitionOut();
 			IngredientsDialogBox.TransitionOut();

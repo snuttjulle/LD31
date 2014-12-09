@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ef04058cbc01645b8374218518bbe4, type: 3}
+  m_Name: Omelette
+  m_EditorClassIdentifier: 
+  Name: Omelette
+  Ingredients:
+  - {fileID: 11400000, guid: 0bef1c88a6006154fa8927ba98838bfa, type: 2}
+  - {fileID: 11400000, guid: ba72d58a76fc6ea449dd4bdbe2f1ece1, type: 2}
+  - {fileID: 11400000, guid: 4eb493f3e8562ec47a146bba1bbc03b2, type: 2}
+  - {fileID: 11400000, guid: 5fae3a8b4862b8a4f8f48149fe451ad8, type: 2}

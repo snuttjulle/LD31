@@ -6,6 +6,13 @@ using System;
 [RequireComponent(typeof(BoxCollider2D), typeof(TableTimeline))]
 public class Table : MonoBehaviour
 {
+	public AudioClip YumSound;
+	public AudioClip YuckSound;
+	public AudioClip WaiterSound;
+	public AudioClip PaySound;
+
+	public GameObject[] Characters;
+
 	private FoodRequest _requests;
 	public FoodRequest Requests
 	{
@@ -34,6 +41,8 @@ public class Table : MonoBehaviour
 	private GameController _controller;
 	private Action<object> _onLeaveCallback;
 
+	private AudioSource _audioSource;
+
 	private bool FoodFullyDelivered
 	{
 		get
@@ -57,11 +66,19 @@ public class Table : MonoBehaviour
 		_deliveredFood = new List<bool>();
 		_timeline = GetComponent<TableTimeline>();
 		_timeline.SetEventTriggerCallback(OnTableEventTrigger);
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	public void InitTable(FoodRequest request, Queue<TableEvent> events)
 	{
 		SetupFoodRequests(request);
+
+		foreach (var chara in Characters)
+			chara.SetActive(false);
+
+		for (int i = 0; i < _requests.RequestedFood.Count; i++)
+			Characters[i].SetActive(true);
+
 		_timeline.TableEvents = events;
 		_timeline.Reset();
 		_hasLeft = false;
@@ -151,6 +168,9 @@ public class Table : MonoBehaviour
 
 		GetComponent<BoxCollider2D>().enabled = false;
 
+		foreach (var chara in Characters)
+			chara.SetActive(false);
+
 		Debug.Log("The Table left");
 	}
 
@@ -175,7 +195,9 @@ public class Table : MonoBehaviour
 			}
 
 			_controller.Pay(this, (uint)(receivedFood * 200)); //TODO: get price depending on food?
-			//TODO: sound play here
+			//PaySound.Play();
+			_audioSource.clip = PaySound;
+			_audioSource.Play();
 
 			Leave();
 		}
@@ -195,6 +217,11 @@ public class Table : MonoBehaviour
 		notice.SetOnNoticePressCallback(OnNoticePress);
 
 		_activeNoticeHandler = notice;
+
+		//OrderSound.Play();
+		_audioSource.clip = WaiterSound;
+		_audioSource.Play();
+		Debug.Log("sound!");
 	}
 
 	public void DeliverDish(Food dish)
@@ -207,6 +234,11 @@ public class Table : MonoBehaviour
 			{
 				_deliveredFood[i] = true;
 
+				//ReceiveRightSound.Play();
+				_audioSource.clip = YumSound;
+				_audioSource.Play();
+				Debug.Log("sound!");
+
 				if (FoodFullyDelivered)
 				{
 					Debug.Log("Fully delivered!");
@@ -217,7 +249,12 @@ public class Table : MonoBehaviour
 			}
 		}
 
-		_controller.GiveCritique(this, 1);
+		//ReceiveWrongSound.Play();
+		_audioSource.clip = YuckSound;
+		_audioSource.Play();
+		//Debug.Log("sound!");
+
+		_controller.GiveCritique(this, 1, false);
 		Debug.Log("Delivered the wrong food");
 		_incorrectDelivery++;
 	}

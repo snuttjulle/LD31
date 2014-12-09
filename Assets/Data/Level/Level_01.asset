@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Level_01
   m_EditorClassIdentifier: 
   Dishes:
-  - {fileID: 11400000, guid: 0b2b70ee101d9a242ab1c4361d1ef1c1, type: 2}
+  - {fileID: 11400000, guid: 805a6ac8bc59cf247aa0f034c80c24c1, type: 2}
   - {fileID: 11400000, guid: d04f516d1acbc4f4c8489d840bdf3882, type: 2}
-  ActiveTables: 02000000
+  ActiveTables: 01000000
   TimelineSettings: {fileID: 11400000, guid: 17865a165c53e4f47882ff4f273e8ec3, type: 2}
-  CritiqueLimit: 1
+  CritiqueLimit: 3

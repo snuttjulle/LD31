@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
+	public AudioClip CritiqueSound;
+
 	public Chef Chef;
 	public CookingDevice[] CookingDevices;
 	public Burner Burner;
@@ -21,6 +23,7 @@ public class GameController : MonoBehaviour
 	public Score Score { get; private set; }
 
 	AnimationStateMachine _animationStateMachine;
+	private AudioSource _audioSource;
 	private float _dayLength = 0.0f;
 	private float _timer = 0.0f;
 	private bool _runDay = false;
@@ -34,6 +37,7 @@ public class GameController : MonoBehaviour
 	{
 		Score = new Score();
 		_animationStateMachine = new AnimationStateMachine(this);
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -64,6 +68,7 @@ public class GameController : MonoBehaviour
 			_day = 0;
 			Score = new Score();
 			_timer = 0;
+			UnityEngine.Object.Destroy(GameObject.FindGameObjectWithTag("Draggable"));
 		}
 
 		_timer += Time.deltaTime;
@@ -183,12 +188,20 @@ public class GameController : MonoBehaviour
 		_animationStateMachine.SetAnimationState(AnimationStates.NotCooking);
 	}
 
-	public void GiveCritique(Table table, uint amount)
+	public void GiveCritique(Table table, uint amount, bool playSound = true)
 	{
 		Score.Critiques += amount;
 		GameObject obj = (GameObject)UnityEngine.Object.Instantiate(AngryFacePrefab, table.transform.position, new Quaternion());
 		DayScreen.UpdateText();
 		_critiquesGottenToday++;
+
+		if (playSound)
+		{
+			_audioSource.clip = CritiqueSound;
+			_audioSource.Play();
+			Debug.Log("sound!");
+		}
+
 		Debug.Log("Critiques: " + Score.Critiques);
 	}
 
