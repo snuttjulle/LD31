@@ -3,6 +3,8 @@
 # =============== #
 Temp/
 Library/
+Bin/
+Bin_web/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #

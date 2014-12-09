@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
 	private bool _runDay = false;
 	private int _critiqueLimit = 0;
 	private int _critiquesGottenToday;
+	private int _activeTables;
 
 	private uint _day = 0;
 	public uint Day { get { return _day; } }
@@ -73,15 +74,21 @@ public class GameController : MonoBehaviour
 			_day = 0;
 			Score = new Score();
 			_timer = 0;
+			_activeTables = 0;
 			UnityEngine.Object.Destroy(GameObject.FindGameObjectWithTag("Draggable"));
 		}
 
 		_timer += Time.deltaTime;
 
+		int tablesLeft = 0;
 		foreach (Table table in Tables)
+		{
 			table.UpdateTime(_timer);
+			if (table.HasLeft)
+				tablesLeft++;
+		}
 
-		if (_timer > _dayLength)
+		if (_timer > _dayLength || tablesLeft >= _activeTables)
 		{
 			Debug.Log("The day is over!");
 			_runDay = false;
@@ -97,6 +104,7 @@ public class GameController : MonoBehaviour
 		_day = (uint)level;
 		DayScreen.UpdateText();
 		Level data = Kitchen.LoadLevelData(level);
+		_activeTables = data.ActiveTables.Count;
 		_critiqueLimit = data.CritiqueLimit;
 		_critiquesGottenToday = 0;
 		_dayLength = 0; //reset day
@@ -175,7 +183,7 @@ public class GameController : MonoBehaviour
 
 		Level data = SetupLevel((int)day);
 		Menu menu = (Menu)UnityEngine.Object.Instantiate(MenuPrefab, new Vector3(0, 0, 0), new Quaternion());
-		menu.SetMenu(data.Dishes);
+		menu.SetMenu(data.Dishes, Kitchen);
 		menu.SetPressCallback(OnMenuClose);
 
 		//Debug.Log(String.Format("Day {0} has started!", _day));
@@ -216,6 +224,12 @@ public class GameController : MonoBehaviour
 		UnityEngine.Object.Instantiate(CoinPrefab, table.transform.position, new Quaternion());
 		DayScreen.UpdateText();
 		Debug.Log("Money: " + Score.Money);
+		Chef.GiveThumbsUp();
+	}
+
+	public void GiveThumbsUp()
+	{
+		Chef.GiveThumbsUp();
 	}
 
 	public void OnMenuClose(object sender)

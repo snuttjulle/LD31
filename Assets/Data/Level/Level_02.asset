@@ -15,5 +15,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 805a6ac8bc59cf247aa0f034c80c24c1, type: 2}
   - {fileID: 11400000, guid: d04f516d1acbc4f4c8489d840bdf3882, type: 2}
   ActiveTables: 02000000
-  TimelineSettings: {fileID: 11400000, guid: 17865a165c53e4f47882ff4f273e8ec3, type: 2}
+  TimelineSettings: {fileID: 11400000, guid: 0f274137aa39d3f4baefc2f26ec76feb, type: 2}
   CritiqueLimit: 3

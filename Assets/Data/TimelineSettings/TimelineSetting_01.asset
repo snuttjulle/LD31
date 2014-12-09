@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: TimelineSetting_01
   m_EditorClassIdentifier: 
   MinNothingTime: 0
-  MaxNothingTime: 10
+  MaxNothingTime: 20
   MinOrderTime: 3
-  MaxOrderTime: 11
+  MaxOrderTime: 30
   MinOrderTimeDelay: 4
-  MaxOrderTimeDelay: 16
+  MaxOrderTimeDelay: 30
   MinPrepareFoodTime: 2
-  MaxPrepareFoodTime: 15
+  MaxPrepareFoodTime: 30
   MinWaitToLeaveTime: 4
-  MaxWaitToLeaveTime: 10
+  MaxWaitToLeaveTime: 30

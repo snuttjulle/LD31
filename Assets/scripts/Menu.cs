@@ -14,36 +14,54 @@ public class Menu : MonoBehaviour
 	private Button _button;
 	private Action<object> _onCloseCallback;
 
+	private List<Food> _dishSelection;
+	public List<Food> GetDishSelection { get { return _dishSelection; } }
+
 	void Awake()
 	{
 		_button = GetComponent<Button>();
 		_button.SetTriggerCallback(OnClose);
 		_defaultStringFormat = DishTexts[0].text;
 
-		foreach(Text text in DishTexts)
+		foreach (Text text in DishTexts)
 			text.text = "";
 	}
 
-	public void SetMenu(List<Food> dishes)
+	public void SetMenu(List<Food> dishes, Kitchen kitchen)
 	{
+		_dishSelection = dishes;
 		if (dishes.Count > 4)
 		{
+			_dishSelection = new List<Food>();
+
+			for (int i = 0; i < 4; i++)
+			{
+				bool unique = false;
+				while (!unique)
+				{
+					int rnd = RandomUtils.GetRandom.Next(0, dishes.Count - 1);
+					if(!_dishSelection.Contains(dishes[rnd]) || _dishSelection.Count >= 4)
+					{
+						_dishSelection.Add(dishes[rnd]);
+						unique = true;
+					}
+				}
+			}
+
 			Debug.Log("Too many dishes, removing randomly");
-			for (int i = 0; i < dishes.Count - 4; i++)
-				dishes.RemoveAt(RandomUtils.GetRandom.Next(0, dishes.Count - 1)); //TODO: test this
 		}
 
-
-		for (int i = 0; i < dishes.Count; i++)
+		for (int i = 0; i < _dishSelection.Count; i++)
 		{
 			StringBuilder sb = new StringBuilder();
-			foreach (Ingredient ing in dishes[i].Ingredients)
+			foreach (Ingredient ing in _dishSelection[i].Ingredients)
 			{
 				sb.Append(ing.Name + Environment.NewLine);
 			}
 
-			DishTexts[i].text = string.Format(_defaultStringFormat, dishes[i].name, sb.ToString());
+			DishTexts[i].text = string.Format(_defaultStringFormat, _dishSelection[i].name, sb.ToString());
 		}
+		kitchen.Inventory = new IngredientCollections(_dishSelection);
 	}
 
 	private void OnClose(object sender)
@@ -53,7 +71,7 @@ public class Menu : MonoBehaviour
 			GetComponent<Animator>().SetTrigger("remove");
 
 			_onCloseCallback(this);
-		
+
 			DestroyAfterTime des = gameObject.AddComponent<DestroyAfterTime>();
 			des.Time = 4;
 		}

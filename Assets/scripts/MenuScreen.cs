@@ -12,6 +12,7 @@ public class MenuScreen : MonoBehaviour
 	public Button RulesDialogBox;
 	public Text RulesText;
 	public AudioSource ClickSound;
+	public Text QuitText;
 
 	public Button Quit;
 
@@ -45,6 +46,7 @@ public class MenuScreen : MonoBehaviour
 	{
 		PlayText.gameObject.SetActive(false);
 		HowText.gameObject.SetActive(false);
+		QuitText.gameObject.SetActive(false);
 
 		RulesText.gameObject.SetActive(true);
 		RulesDialogBox.gameObject.SetActive(true);
@@ -56,6 +58,7 @@ public class MenuScreen : MonoBehaviour
 	{
 		PlayText.gameObject.SetActive(true);
 		HowText.gameObject.SetActive(true);
+		QuitText.gameObject.SetActive(true);
 
 		RulesText.gameObject.SetActive(false);
 		RulesDialogBox.gameObject.SetActive(false);

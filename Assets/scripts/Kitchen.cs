@@ -16,6 +16,9 @@ public class Kitchen : MonoBehaviour
 
 	private bool _isCooking = false;
 
+	private IngredientCollections _inventory;
+	public IngredientCollections Inventory { get { return _inventory; } set { _inventory = value; PotDialogBox.InitPotDialog(); } } 
+
 	void Start()
 	{
 		_button = GetComponent<Button>();
@@ -32,7 +35,7 @@ public class Kitchen : MonoBehaviour
 	public Level LoadLevelData(int level)
 	{
 		_levelData = Database.GetLevelData(level);
-		PotDialogBox.InitPotDialog();
+		//PotDialogBox.InitPotDialog();
 		return _levelData;
 	}
 
@@ -53,12 +56,12 @@ public class Kitchen : MonoBehaviour
 
 	public IngredientsInventory GetInventory()
 	{
-		IngredientCollections collection = _levelData.IngredientCollection;
+		//IngredientCollections collection = _levelData.IngredientCollection;
 
 		if (Controller.Day > 4) //after 5 days the list is shuffled
-			collection.Shuffle();
+			Inventory.Shuffle();
 
-		return new IngredientsInventory(collection);
+		return new IngredientsInventory(Inventory);
 	}
 
 	public void Cook(IngredientCollections ingredients)

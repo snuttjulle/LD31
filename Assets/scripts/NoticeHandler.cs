@@ -7,6 +7,7 @@ public enum NoticeType { OrderFood, Pay }
 
 public class NoticeHandler : MonoBehaviour
 {
+	public PotDialogBox PotDialogBox;
 	public Animator NoticeGraphics;
 	public FoodOrderNotice OrderBoxPrefab;
 	public NoticeType NoticeType;
@@ -29,6 +30,9 @@ public class NoticeHandler : MonoBehaviour
 
 	void OnPress(object sender)
 	{
+		if (PotDialogBox.IsOpen)
+			return;
+
 		Debug.Log("Press:" + sender);
 
 		if (_onPressCallback != null)

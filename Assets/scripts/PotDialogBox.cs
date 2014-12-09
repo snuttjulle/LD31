@@ -17,6 +17,8 @@ public class PotDialogBox : MonoBehaviour
 	private IngredientsInventory _inventory;
 	private AudioSource _audioSource;
 
+	public bool IsOpen { get; private set; }
+
 	void Start()
 	{
 		
@@ -29,7 +31,7 @@ public class PotDialogBox : MonoBehaviour
 
 	public void InitPotDialog()
 	{
-		_inventory = Kitchen.GetInventory();
+		_inventory = Kitchen.GetInventory(); //TODO: set inventory from gamecontroller
 		_inventory.SetDialogContentHandler(CookingContentHandler, PotTextPrefab);
 
 		ResetButton.MultiPress = true;
@@ -72,6 +74,7 @@ public class PotDialogBox : MonoBehaviour
 
 	public void Show()
 	{
+		IsOpen = true;
 		CookDialogBox.TransitionIn();
 		CancelButton.SetTriggerCallback(CloseDialog);
 		ResetButton.SetTriggerCallback(OnPotReset);
@@ -111,6 +114,7 @@ public class PotDialogBox : MonoBehaviour
 
 	public void Hide()
 	{
+		IsOpen = false;
 		CookDialogBox.TransitionOut();
 		IngredientsDialogBox.TransitionOut();
 		CookDialogBox.SetOnTransitionComplete((x) =>

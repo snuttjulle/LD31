@@ -28,11 +28,13 @@ public class Table : MonoBehaviour
 		}
 	}
 	public NoticeHandler NoticeHandlerPrefab;
+	public PotDialogBox PotDialogBox;
 
 	private NoticeHandler _activeNoticeHandler;
 	private List<bool> _deliveredFood;
 	private bool _hasPayed;
 	private bool _hasLeft;
+	public bool HasLeft { get { return _hasLeft; } }
 
 	private int _incorrectDelivery;
 
@@ -213,6 +215,7 @@ public class Table : MonoBehaviour
 		NoticeHandler notice = (NoticeHandler)UnityEngine.Object.Instantiate(NoticeHandlerPrefab, pos, new Quaternion());
 		notice.SetupRequestData(Requests);
 		notice.NoticeType = type;
+		notice.PotDialogBox = PotDialogBox;
 
 		notice.SetOnNoticePressCallback(OnNoticePress);
 
@@ -238,6 +241,7 @@ public class Table : MonoBehaviour
 				_audioSource.clip = YumSound;
 				_audioSource.Play();
 				Debug.Log("sound!");
+				_controller.GiveThumbsUp();
 
 				if (FoodFullyDelivered)
 				{
