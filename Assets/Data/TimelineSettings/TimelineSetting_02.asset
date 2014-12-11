@@ -20,4 +20,4 @@ MonoBehaviour:
   MinPrepareFoodTime: 6
   MaxPrepareFoodTime: 20
   MinWaitToLeaveTime: 4
-  MaxWaitToLeaveTime: 27
+  MaxWaitToLeaveTime: 8
